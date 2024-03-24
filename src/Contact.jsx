@@ -1,9 +1,9 @@
 
 const Contact = () => {
   return (
-    <div>
+    <main  className="w-screen overflow-hidden">
       <h1>Contact us</h1>
-    </div>
+    </main>
   )
 }
 

@@ -1,9 +1,9 @@
 
 const Services = () => {
   return (
-    <div>
+    <main  className="w-screen overflow-hidden">
       <h1>Services</h1>
-    </div>
+    </main>
   )
 }
 
