@@ -1,9 +1,9 @@
-import { FaFacebook } from "react-icons/fa6";
-import { SiViber } from "react-icons/si";
-import { FiPhoneCall } from "react-icons/fi";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import bg from "/images/hero-image.png";
+import BlogComponent from "./BlogComponent";
 
-const Team = () => {
+
+const ArtistDetail = () => {
   const artists = [
     {
       id: 1,
@@ -17,27 +17,27 @@ const Team = () => {
       artWorks: [
         {
           img: "https://i.pinimg.com/236x/13/3c/51/133c511bbb2cd84c8b20ca39b2d5a868.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/61/f0/9f/61f09fb8203fbf83ceb706eed26c8ced.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/c1/f7/3b/c1f73b4b3059ecd78bd61543aa3f8431.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/84/db/24/84db24cb7353b32cb45775fefc71e8f2.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/1f/85/4b/1f854ba7a3410ddc9b6194113170055c.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/91/32/22/9132228cf2420304f9f6726e627330ea.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
       ],
     },
@@ -53,30 +53,29 @@ const Team = () => {
       artWorks: [
         {
           img: "https://i.pinimg.com/236x/13/3c/51/133c511bbb2cd84c8b20ca39b2d5a868.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/61/f0/9f/61f09fb8203fbf83ceb706eed26c8ced.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/c1/f7/3b/c1f73b4b3059ecd78bd61543aa3f8431.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/84/db/24/84db24cb7353b32cb45775fefc71e8f2.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/1f/85/4b/1f854ba7a3410ddc9b6194113170055c.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/91/32/22/9132228cf2420304f9f6726e627330ea.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
       ],
-      
     },
     {
       id: 3,
@@ -90,30 +89,29 @@ const Team = () => {
       artWorks: [
         {
           img: "https://i.pinimg.com/236x/13/3c/51/133c511bbb2cd84c8b20ca39b2d5a868.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/61/f0/9f/61f09fb8203fbf83ceb706eed26c8ced.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/c1/f7/3b/c1f73b4b3059ecd78bd61543aa3f8431.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/84/db/24/84db24cb7353b32cb45775fefc71e8f2.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/1f/85/4b/1f854ba7a3410ddc9b6194113170055c.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/91/32/22/9132228cf2420304f9f6726e627330ea.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
       ],
-      
     },
     {
       id: 4,
@@ -127,90 +125,96 @@ const Team = () => {
       artWorks: [
         {
           img: "https://i.pinimg.com/236x/13/3c/51/133c511bbb2cd84c8b20ca39b2d5a868.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/61/f0/9f/61f09fb8203fbf83ceb706eed26c8ced.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/c1/f7/3b/c1f73b4b3059ecd78bd61543aa3f8431.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/84/db/24/84db24cb7353b32cb45775fefc71e8f2.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/1f/85/4b/1f854ba7a3410ddc9b6194113170055c.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
         {
           img: "https://i.pinimg.com/236x/91/32/22/9132228cf2420304f9f6726e627330ea.jpg",
-          title: 'CAUCASIAN GUY WITH FULL TATTOO'
+          title: "CAUCASIAN GUY WITH FULL TATTOO",
         },
       ],
-      
     },
   ];
 
-  const location = useLocation();
+  const { id } = useParams();
 
-  const nav = useNavigate()
+  const currentArtist = artists.filter((artist) => artist.id == id);
+  const { name, artWorks } = currentArtist[0];
+  // Calculate the size of each chunk
+  const chunkSize = Math.ceil(artWorks.length / 3);
 
-  const pathname  = location.pathname
+  // Split the array into chunks
+  const chunkedArrays = [];
+  for (let i = 0; i < artWorks.length; i += chunkSize) {
+    const chunk = artWorks.slice(i, i + chunkSize);
+    chunkedArrays.push(chunk);
+  }
 
-  const homeRoute = pathname == '/'
-
-  
-
-
-  const limitedArtist = pathname == '/' ? artists.slice(0, 3): artists
   return (
-    <section className="container mx-auto mt-20">
-      <div className="text-center">
-        <p>our team</p>
-        <h1>Aweasome Artists</h1>
-        <p className="w-3/4 mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam tempore
-          id quibusdam est, amet dolore nam voluptatem nihil temporibus,
-          nesciunt quasi ex eligendi, sed natus cum voluptas soluta laudantium
-          voluptatibus!
-        </p>
-      </div>
+    <main className="w-screen overflow-hidden">
+      <section
+        style={{
+          backgroundImage: `url(${bg})`,
+        }}
+        className={`relative w-screen h-[40vh] object-cover bg-center bg-cover z-20 `}
+      >
+        <div className="overlay absolute top-0 right-0 z-30 bg-black opacity-40 w-full h-full"></div>
 
-      <div className="flex items-center justify-between mt-8 flex-wrap gap-y-6">
-        {limitedArtist.map((artist) => (
-          <div
-          onClick={() => nav(`/team/${artist.id}`)}
-            style={{
-              backgroundImage: `url(${artist.img})`,
-            }}
-            className="object-cover w-full h-[30rem] rounded-md bg-center bg-cover bg-no-repeat basis-[30%] cursor-pointer"
-            key={artist.id}
-          >
-            <div className="flex flex-col items-center mt-[80%]">
-              <h6>{artist.name}</h6>
-              <p>{artist.position}</p>
-              <div className="flex gap-4">
-                <FaFacebook size={24}/>
-                <SiViber size={24}/>
-                <FiPhoneCall size={24}/>
-              </div>
-            </div>
+        <div className="relative z-40 grid place-items-center h-full">
+          <div className="">
+            <h1>About of {name}</h1>
+            <p className="text-center">Home/ {name}</p>
           </div>
-        ))}
-      </div>
-      <div className="grid place-items-center mt-8">
-        {
-          homeRoute && 
-      <button onClick={() => nav('/team')} className="">View all Team</button>
-        }
+        </div>
+      </section>
 
-      </div>
+      <section className="container mx-auto">
+        <div className="text-center">
+          <p>some of  {name} `s</p>
+          <h1>Amazing Artworks</h1>
+          <p className="w-3/4 mx-auto">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+            tempore id quibusdam est, amet dolore nam voluptatem nihil
+            temporibus, nesciunt quasi ex eligendi, sed natus cum voluptas
+            soluta laudantium voluptatibus!
+          </p>
+        </div>
 
-    </section>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 min-h-[130vh] mt-20">
+          {chunkedArrays?.map((array, index) => (
+            <div key={index} className="grid gap-4">
+              {array.map((art, index) => (
+                <div key={index} className="rounded-md overflow-hidden">
+                  <img
+                    className=" w-full object-cover object-center"
+                    src={art.img}
+                    alt="gallery-photo"
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+      <BlogComponent/>
+      
+    </main>
   );
 };
 
-export default Team;
+export default ArtistDetail;

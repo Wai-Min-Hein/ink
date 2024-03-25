@@ -1,5 +1,13 @@
 import { FaCalendarAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
+
+
+
+const BlogComponent = () => {
+  const nav = useNavigate();
+
+  
 const blogs = [
   {
     id: 1,
@@ -28,8 +36,6 @@ const blogs = [
 ];
 
 const selectedBlogs = blogs.slice(0, 2);
-
-const BlogComponent = () => {
   return (
     <section className="flex items-start justify-between container mx-auto mt-32 w-screen">
       <div className="basis-[35%]">
@@ -41,7 +47,7 @@ const BlogComponent = () => {
         </p>
         <button>View all News</button>
       </div>
-      <div className="photo flex-1 flex items-center justify-between ">
+      <div className="photo flex-1 flex items-center justify-between">
         {selectedBlogs.map((blog) => (
           <div className="basis-[49%]" key={blog.id}>
             <div className="">
@@ -58,7 +64,7 @@ const BlogComponent = () => {
             <h6 className="">{blog.title}</h6>
             <p>{blog.para}</p>
 
-            <button>Read More</button>
+            <button  onClick={() => nav(`/blogs/${blog.id}`)}>Read More</button>
           </div>
         ))}
       </div>

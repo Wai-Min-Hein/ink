@@ -21,6 +21,8 @@ const Contact = () => {
       </section>
 
       <ContactUs/>
+
+
     </main>
   )
 }

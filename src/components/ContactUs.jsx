@@ -85,9 +85,14 @@ const ContactUs = () => {
       </div>
       <div className="basis-1/2 mx-auto grid place-items-center">
 
-        <div className="border border-white w-2/3 h-4/5 rounded-md py-20 shadow-md grid place-items-center">
+        <div className="border border-white w-3/5 h-4/5 rounded-md py-20 shadow-md">
 
-            <h1 className="pb-6 border-b bprder-white">Thank you</h1>
+            <h1 className="pb-6 border-b bprder-white px-8 text-4xl">Thank for intresting</h1>
+
+            <div className="px-8 text-xl">
+              <p>We will be in touch.</p>
+              <p>Shortly!</p>
+            </div>
 
         </div>
       </div>

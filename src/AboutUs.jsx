@@ -1,4 +1,5 @@
-import Service from "./components/Service";
+import About from "./components/About";
+import Team from "./components/Team";
 import Whyus from "./components/Whyus";
 
 import bg from "/images/hero-image.png";
@@ -18,13 +19,15 @@ const AboutUs = () => {
 
         <div className="relative z-40 grid place-items-center h-full">
           <div className="">
-            <h1>Our Service</h1>
-            <p className="text-center">Home/ Service</p>
+            <h1>About Ink</h1>
+            <p className="text-center">Home/ about</p>
           </div>
         </div>
       </section>
-      <Service/>
       <Whyus />
+      {/* <Service/> */}
+      <About/>
+      <Team/>
     </main>
   );
 };
