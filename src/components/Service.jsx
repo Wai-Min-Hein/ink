@@ -42,9 +42,11 @@ const Service = () => {
     ]
   return <section className="container mx-auto mt-24">
     <div className="text-center">
-        <p>Services</p>
-        <h3>What we do</h3>
-        <p className="w-3/4 mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ut velit similique unde dolorem voluptatem recusandae aliquid neque ea, accusantium amet, asperiores temporibus corporis accusamus aspernatur assumenda enim. Aliquam, minima!</p>
+        <p className="text-xl italic font-[400]">Services</p>
+        <h3 className="my-2 leading-[1.2] tracking-wider text-5xl font-[500]">What we do</h3>
+        <p className="w-3/4 mx-auto text-[1.2rem] tracking-wide leading-tight">
+        Come to us if you don’t want to regret it.
+Stop thinking and make your dream.</p>
     </div>
 
     <div className="flex items-center justify-start flex-wrap mt-12 gap-6">

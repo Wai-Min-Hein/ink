@@ -17,6 +17,10 @@ export default {
         header: ['Roboto Slab', 'serif'],
         para: ['Alegreya', 'serif'],
       },
+      grayscale: {
+        50: '50%',
+        80: '80%',
+      }
     },
     screens: {
       'sm': '640px',

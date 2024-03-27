@@ -42,8 +42,7 @@ const selectedBlogs = blogs.slice(0, 2);
         <p>Checkout our</p>
         <h1>Blogs & News</h1>
         <p>
-          My Bonnie lies over the ocean. My Bonnie lies over the sea. My Bonnie
-          lies over the ocean. Oh, bring back my Bonnie to me.
+        Delve into our insights, trends, and tips curated by our experts. Stay informed, inspired, and connected with the latest in the tattoo world
         </p>
         <button>View all News</button>
       </div>

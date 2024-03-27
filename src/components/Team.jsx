@@ -172,10 +172,7 @@ const Team = () => {
         <p>our team</p>
         <h1>Aweasome Artists</h1>
         <p className="w-3/4 mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam tempore
-          id quibusdam est, amet dolore nam voluptatem nihil temporibus,
-          nesciunt quasi ex eligendi, sed natus cum voluptas soluta laudantium
-          voluptatibus!
+        Meet our team of skilled artisans, each bringing a unique flair and passion to their craft, ensuring your tattoo vision is brought to life with unparalleled expertise
         </p>
       </div>
 

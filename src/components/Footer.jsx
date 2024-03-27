@@ -37,8 +37,7 @@ const Footer = () => {
 
       <div className="mb-6">
         <p className="w-1/2 mx-auto text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-          molestiae ea eaque perferendis earum, harum ipsam, laborum.
+        Join our community of tattoo enthusiasts and become a part of something bigger than just ink on skin.
         </p>
       </div>
 

@@ -3,6 +3,7 @@ import Artwork from "./components/Artwork";
 import BlogComponent from "./components/BlogComponent";
 import Hero from "./components/Hero";
 import Service from "./components/Service";
+import Whyus from "./components/Whyus";
 import Team from "./components/Team";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
       <Hero />
       <About/>
       <Service/>
+      <Whyus/>
       <Artwork/>
       <Team/>
       <BlogComponent/>

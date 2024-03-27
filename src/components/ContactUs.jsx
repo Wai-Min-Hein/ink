@@ -11,9 +11,7 @@ const ContactUs = () => {
           <p>Contact us</p>
           <h1>Get in touch</h1>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi
-            eos nesciunt dicta architecto consequuntur fuga voluptates quibusdam
-            cumque sapiente doloribus, nisi minima voluptatem iure pariatur.
+          Ready to start your tattoo journey? Reach out for appointments, questions, or consultations. We are here to make your vision a reality.
           </p>
         </div>
 

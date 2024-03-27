@@ -48,9 +48,22 @@ const Artwork = () => {
       id: 12,
       img: "https://i.pinimg.com/236x/3a/dd/d4/3addd46f3713beef0c43a953279f2ce8.jpg",
     },
+    {
+      id: 13,
+      img: "https://i.pinimg.com/236x/3a/dd/d4/3addd46f3713beef0c43a953279f2ce8.jpg",
+    },
+    {
+      id: 14,
+      img: "https://i.pinimg.com/236x/3a/dd/d4/3addd46f3713beef0c43a953279f2ce8.jpg",
+    },
+    {
+      id: 15,
+      img: "https://i.pinimg.com/236x/c4/93/9d/c4939d5cf6251a0547927e219f62ffc2.jpg",
+    }
   ];
-  // Calculate the size of each chunk
-  const chunkSize = Math.ceil(artWorks.length / 3);
+  const numChunks = 5;
+const chunkSize = Math.ceil(artWorks.length / numChunks);
+
 
   // Split the array into chunks
   const chunkedArrays = [];
@@ -59,26 +72,26 @@ const Artwork = () => {
     chunkedArrays.push(chunk);
   }
 
+  console.log(chunkedArrays, chunkSize);
+
   return (
     <section className="container mx-auto">
       <div className="text-center">
         <p>some of our</p>
         <h1>Amazing Artworks</h1>
         <p className="w-3/4 mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam tempore
-          id quibusdam est, amet dolore nam voluptatem nihil temporibus,
-          nesciunt quasi ex eligendi, sed natus cum voluptas soluta laudantium
-          voluptatibus!
+          Immerse yourself in our gallery of stunning tattoos, each a testament
+          to our artists`s creativity, skill, and dedication to craft
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 min-h-[130vh] mt-20">
+      <div className="grid grid-cols-3 gap-4 md:grid-cols-5 min-h-[60vh] mt-20 ">
         {chunkedArrays?.map((array, index) => (
-          <div key={index} className="grid gap-4">
+          <div key={index} className="flex flex-col gap-y-4">
             {array.map((art, index) => (
-              <div key={index} className="rounded-md overflow-hidden">
+              <div key={index} className="rounded-md">
                 <img
-                  className=" w-full object-cover object-center"
+                  className="w-full object-cover object-center grayscale-50 rounded-md"
                   src={art.img}
                   alt="gallery-photo"
                 />
@@ -87,6 +100,8 @@ const Artwork = () => {
           </div>
         ))}
       </div>
+
+      
     </section>
   );
 };

@@ -56,8 +56,7 @@ const Blog = () => {
           <h1>Blogs & News</h1>
 
           <p className="w-1/2 mx-auto text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-            veritatis adipisci facere aspernatur itaque ipsum quos at.
+          Delve into our insights, trends, and tips curated by our experts. Stay informed, inspired, and connected with the latest in the tattoo world
           </p>
         </div>
 
