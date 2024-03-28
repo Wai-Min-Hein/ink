@@ -1,9 +1,9 @@
 const About = () => {
   return (
-    <section className="flex items-start justify-start gap-12  container mx-auto mt-32 w-screen h-screen">
+    <section className="flex flex-col lg:flex-row items-start justify-start gap-12 px-4 xl:px-0  xl:container mx-auto mt-32 w-screen min-h-screen">
       <div className="content  basis-[43%]">
         <p className="text-xl italic font-[400]">About Ink Studio</p>
-        <h1 className="my-4 leading-[1.2] tracking-wider text-5xl font-[500]">
+        <h1 className="my-4 leading-[1.2] tracking-wider text-xl sm:text-2xl md:text-4xl xl:text-[2.5rem] 2xl:text-5xl font-[500]">
           WE ARE THE COOLEST TATTOO STUDIO
         </h1>
         <p className="text-[1.2rem] tracking-wide leading-tight">
@@ -60,11 +60,11 @@ const About = () => {
         </div>
         <button className="mt-12 nBtn">More About Us</button>
       </div>
-      <div className="photo flex-1 relative">
+      <div className="photo flex-1 self-center relative">
         <div className="relative z-10">
           <img
             src="/images/about-image.png"
-            className="w-4/5 h-screen object-cover"
+            className="w-full md:w-4/5 h-screen object-cover"
             alt=""
           />
         </div>

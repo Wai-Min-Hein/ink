@@ -163,11 +163,11 @@ const Team = () => {
   return (
     <section className="container mx-auto mt-20">
       <div className="text-center">
-        <p className="text-xl italic font-[500] capitalize">our team</p>
-        <h1 className="my-4 leading-[1.2] tracking-wider text-5xl font-[500]">
+        <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl font-[500] italic capitalize">our team</p>
+        <h1 className="uppercase text-xl ssm:text-3xl sm:text-[2.5rem] md:text-5xl lg:text-7xl font-semibold tracking-widest py-4">
           Aweasome Artists
         </h1>
-        <p className="w-3/4 mx-auto text-md text-[1.2rem] tracking-normal leading-tight">
+        <p className="w-3/4 mx-auto text-md text-[1.2rem] tracking-normal leading-tight sm:w-full px-3 sm:px-6 md:px-0 md:w-4/5 lg:w-2/3 ">
           Meet our team of skilled artisans, each bringing a unique flair and
           passion to their craft, ensuring your tattoo vision is brought to life
           with unparalleled expertise
@@ -181,7 +181,7 @@ const Team = () => {
             style={{
               backgroundImage: `url(${artist.img})`,
             }}
-            className="relative z-10 object-cover w-full h-[30rem] rounded-md bg-center bg-cover bg-no-repeat basis-[30%] cursor-pointer overflow-y-hidden grayscale-80 group "
+            className="relative z-10 object-cover w-full h-[30rem] rounded-md bg-center bg-cover bg-no-repeat basis-4/5  mx-auto sm:mx-0 sm:basis-[48%] md:basis-[30%] cursor-pointer overflow-y-hidden grayscale-80 group "
             key={artist.id}
           >
             <div className="absolute z-20 w-full h-full bg-black group-hover:opacity-40 translate-y-[80%] opacity-0 group-hover:translate-y-[20%] duration-300 blur-3xl"></div>

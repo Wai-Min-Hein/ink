@@ -1,13 +1,48 @@
-import { motion,useMotionValue  } from "framer-motion";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 
-
+import { useEffect, useRef } from "react";
 
 const Whyus = () => {
-  const x = useMotionValue(0)
-  console.log(x)
+  const ref = useRef(null);
+
+  const test = 3;
+
+  const ifView = useInView(ref);
+
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, Math.round);
+
+  const count2 = useMotionValue(0);
+  const rounded2 = useTransform(count2, Math.round);
+
+  const count3 = useMotionValue(0);
+  const rounded3 = useTransform(count3, Math.round);
+
+  useEffect(() => {
+     ifView && animate(count, 90, { duration: 2 });
+  }, [count, ifView]);
+
+
+  useEffect(() => {
+     ifView && animate(count2, 74, { duration: 2 });
+  }, [count2, ifView]);
+
+  useEffect(() => {
+     ifView && animate(count3, 64, { duration: 2 });
+  }, [count3, ifView]);
+
   return (
-    <section  className="flex items-start justify-start gap-12  container mx-auto mt-20">
-      <div className="photo flex-1 relative">
+    <section
+      ref={ref}
+      className="flex  flex-col-reverse lg:flex-row  items-start justify-start gap-12 px-4 xl:px-0  xl:container  mx-auto mt-20"
+    >
+      <div className="photo flex-1 self-center relative">
         <div className="relative z-10">
           <img
             src="/images/why-us.png"
@@ -50,10 +85,10 @@ const Whyus = () => {
               Experience
             </h6>
             <div className="p-[.2rem]  w-full bg-transparent relative z-10">
-              <motion.p
+              <motion.div
               initial={{ x: 0 }}
               whileInView={{
-                x: '90%',
+                x: "90%",
               }}
               viewport={{
                 once: true,
@@ -61,33 +96,119 @@ const Whyus = () => {
               transition={{
                 duration: 2,
               }}
-               className="absolute z-30 top-[-2rem] w-full">50%</motion.p>
+              
+              className="absolute z-30 top-[-2rem] w-full flex items-start gap-1">
+                
+              <motion.span
+                
+                className=""
+              >
+                {rounded}
+                
+              </motion.span>
+              <span> %</span>
+              </motion.div>
               <motion.div
-              initial={{ width: 0 }}
-              whileInView={{
-                width: "90%",
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 2,
-              }}
-              className="bg-white w-[90%] h-full absolute z-20 top-0 left-0 rounded-sm"></motion.div>
+                initial={{ width: 0 }}
+                whileInView={{
+                  width: "90%",
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 2,
+                }}
+                className="bg-white w-[90%] h-full absolute z-20 top-0 left-0 rounded-sm"
+              ></motion.div>
             </div>
           </div>
 
           <div className="my-4">
-            <h6 className="mb-2 text-lg font-[500] tracking-widest">Tattoo</h6>
-            <div className="p-[.2rem]  overflow-hidden bg-transparent relative z-10">
-              <div className="bg-white w-[82%] h-full absolute z-20 top-0 left-0"></div>
+            <h6 className="mb-2 text-lg font-[500] tracking-widest">
+              Tattoo
+            </h6>
+            <div className="p-[.2rem]  w-full bg-transparent relative z-10">
+              <motion.div
+              initial={{ x: 0 }}
+              whileInView={{
+                x: "74%",
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 2,
+              }}
+              
+              className="absolute z-30 top-[-2rem] w-full flex items-start gap-1">
+                
+              <motion.span
+                
+                className=""
+              >
+                {rounded2}
+                
+              </motion.span>
+              <span> %</span>
+              </motion.div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{
+                  width: "76%",
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 2,
+                }}
+                className="bg-white w-[76%] h-full absolute z-20 top-0 left-0 rounded-sm"
+              ></motion.div>
             </div>
           </div>
 
           <div className="">
-            <h6 className="mb-2 text-lg font-[500] tracking-widest">Price</h6>
-            <div className="p-[.2rem]  overflow-hidden bg-transparent relative z-10">
-              <div className="bg-white w-[67%] h-full absolute z-20 top-0 left-0"></div>
+            <h6 className="mb-2 text-lg font-[500] tracking-widest">
+              Price
+            </h6>
+            <div className="p-[.2rem]  w-full bg-transparent relative z-10">
+              <motion.div
+              initial={{ x: 0 }}
+              whileInView={{
+                x: "64%",
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 2,
+              }}
+              
+              className="absolute z-30 top-[-2rem] w-full flex items-start gap-1">
+                
+              <motion.span
+                
+                className=""
+              >
+                {rounded3}
+                
+              </motion.span>
+              <span> %</span>
+              </motion.div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{
+                  width: "64%",
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 2,
+                }}
+                className="bg-white w-[64%] h-full absolute z-20 top-0 left-0 rounded-sm"
+              ></motion.div>
             </div>
           </div>
         </div>

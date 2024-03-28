@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="mt-10 w-screen container mx-auto">
+    <footer className="mt-10 w-screen px-4 md:px-0 md:container md:mx-auto">
       <div className="flex justify-center">
         <img src={logo} className="w-1/6 h-auto object-cover" alt="" />
       </div>
 
-      <ul className="flex items-center justify-center gap-12 flex-1 mx-auto text-lg font-[500] my-6">
+      <ul className="flex items-center justify-center gap-x-12 gap-y-4 flex-1 flex-wrap mx-auto text-lg font-[500] my-6">
         <Link to={"/"}>
           <li className="cursor-pointer">Home</li>
         </Link>
@@ -36,7 +36,7 @@ const Footer = () => {
       </ul>
 
       <div className="mb-6">
-        <p className="w-2/5 mx-auto text-center text-lg font-normal capitalize tracking-wide">
+        <p className="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 mx-auto text-center text-lg font-normal capitalize tracking-wide">
           Join our community of tattoo enthusiasts and become a part of
           something bigger than just ink on skin.
         </p>

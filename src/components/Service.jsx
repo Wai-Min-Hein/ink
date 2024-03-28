@@ -25,9 +25,9 @@ const Service = () => {
     ]
   return <section className="container mx-auto mt-24">
     <div className="text-center">
-        <p className="text-xl italic font-[400]">Services</p>
-        <h3 className="my-2 leading-[1.2] tracking-wider text-5xl font-[500]">What we do</h3>
-        <p className="w-3/4 mx-auto text-[1.2rem] tracking-wide leading-tight">
+        <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl font-[400] italic capitalize">Services</p>
+        <h3 className="uppercase text-xl ssm:text-3xl sm:text-[2.5rem] md:text-5xl lg:text-7xl font-semibold tracking-widest py-4">What we do</h3>
+        <p className="sm:w-full px-3 sm:px-6 md:px-0 md:w-4/5 lg:w-2/3  mx-auto text-[1.2rem] tracking-wide leading-tight">
         Come to us if you don’t want to regret it.
 Stop thinking and make your dream.</p>
     </div>

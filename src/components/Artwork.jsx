@@ -1,3 +1,5 @@
+import { useMediaQuery } from "react-responsive";
+
 const Artwork = () => {
   const artWorks = [
     {
@@ -59,11 +61,17 @@ const Artwork = () => {
     {
       id: 15,
       img: "https://i.pinimg.com/236x/c4/93/9d/c4939d5cf6251a0547927e219f62ffc2.jpg",
-    }
+    },
   ];
-  const numChunks = 5;
-const chunkSize = Math.ceil(artWorks.length / numChunks);
 
+  // const xl = useMediaQuery({ query: "(min-width: 1280px)" });
+  // const lg = useMediaQuery({ query: "(min-width: 1024px)" });
+  const md = useMediaQuery({ query: "(min-width: 768px)" });
+  // const sm = useMediaQuery({ query: "(min-width: 640px)" });
+  // const ssm = useMediaQuery({ query: "(min-width: 560px)" });
+
+  const numChunks = (md && 5) || 3;
+  const chunkSize = Math.ceil(artWorks.length / numChunks);
 
   // Split the array into chunks
   const chunkedArrays = [];
@@ -72,20 +80,26 @@ const chunkSize = Math.ceil(artWorks.length / numChunks);
     chunkedArrays.push(chunk);
   }
 
-  console.log(chunkedArrays, chunkSize);
+  // const xxl = useMediaQuery({
+  //   query: "(min-width: 1537px)",
+  // });
 
   return (
-    <section className="container mx-auto">
+    <section className="xl:container px-4 xl:px-0 mx-auto mt-12">
       <div className="text-center">
-        <p>some of our</p>
-        <h1>Amazing Artworks</h1>
-        <p className="w-3/4 mx-auto">
+        <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl  italic font-[400]">
+          some of our
+        </p>
+        <h1 className="mt-2 mb-4   uppercase text-xl ssm:text-3xl sm:text-[2.5rem] md:text-5xl lg:text-7xl font-semibold tracking-widest py-4">
+          Amazing Artworks
+        </h1>
+        <p className="sm:w-full px-3 sm:px-6 md:px-0 md:w-4/5 lg:w-2/3 mx-auto text-xl tracking-wider">
           Immerse yourself in our gallery of stunning tattoos, each a testament
           to our artists`s creativity, skill, and dedication to craft
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 md:grid-cols-5 min-h-[60vh] mt-20 ">
+      <div className="grid grid-cols-3 gap-4 md:grid-cols-5 min-h-[60vh] mt-12 ">
         {chunkedArrays?.map((array, index) => (
           <div key={index} className="flex flex-col gap-y-4">
             {array.map((art, index) => (
@@ -100,8 +114,6 @@ const chunkSize = Math.ceil(artWorks.length / numChunks);
           </div>
         ))}
       </div>
-
-      
     </section>
   );
 };

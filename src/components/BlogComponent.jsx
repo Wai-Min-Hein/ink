@@ -33,21 +33,23 @@ const BlogComponent = () => {
 
   const selectedBlogs = blogs.slice(0, 2);
   return (
-    <section className="flex items-start justify-between container mx-auto mt-32 w-screen gap-4">
+    <section className="flex flex-col lg:flex-row items-start justify-between md:container md:mx-auto px-4 md:px-0 mt-32 w-screen gap-4">
       <div className="basis-[35%]">
-        <p className="text-xl italic font-[500] capitalize">Checkout our</p>
-        <h1 className="my-4 leading-[1.2] tracking-wider text-5xl font-[500]">
+        <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl font-[500] italic capitalize">
+          Checkout our
+        </p>
+        <h1 className="uppercase text-xl ssm:text-3xl sm:text-[2.5rem] md:text-5xl lg:text-7xl font-semibold tracking-widest py-4">
           Blogs & News
         </h1>
-        <p className="text-md text-[1.2rem] tracking-normal leading-tight">
+        <p className="sm:w-full px-3 sm:px-6 md:px-0  mx-auto text-xl tracking-wider">
           Delve into our insights, trends, and tips curated by our experts. Stay
           informed, inspired, and connected with the latest in the tattoo world
         </p>
         <button className="nBtn mt-4">View all News</button>
       </div>
-      <div className="photo flex-1 flex items-center justify-between">
+      <div className="photo flex-1 flex items-center justify-between flex-wrap gap-y-6">
         {selectedBlogs.map((blog) => (
-          <div className="basis-[49%]" key={blog.id}>
+          <div className="basis-full mx-auto ssm:mx-0 ssm:basis-[49%]" key={blog.id}>
             <div className="">
               <img
                 src={blog.img}
@@ -55,23 +57,26 @@ const BlogComponent = () => {
                 alt=""
               />
             </div>
-            <h6 className="my-4 text-lg font-[500] px-4 tracking-wider">
+            <h6 className="my-4 text-lg font-[500] md:px-4 tracking-wider">
               {blog.title}
             </h6>
 
-            <div className="flex gap-3 items-center justify-start px-4">
+            <div className="flex gap-3 items-center justify-start md:px-4">
               <FaCalendarAlt />
               <p className="tracking-wide">September 12, 2022</p>
             </div>
-            <p className="text-lg font-normal tracking-wide leading-tight px-4 py-4">
+            <p className="text-lg font-normal tracking-wide leading-tight md:px-4 py-4">
               {blog.para}
             </p>
 
             <div className="px-4">
-
-            <button className="px-4 border border-white rounded-sm py-2" onClick={() => nav(`/blogs/${blog.id}`)}>Read More</button>
+              <button
+                className="px-4 border border-white rounded-sm py-2"
+                onClick={() => nav(`/blogs/${blog.id}`)}
+              >
+                Read More
+              </button>
             </div>
-
           </div>
         ))}
       </div>

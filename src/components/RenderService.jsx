@@ -5,7 +5,7 @@ const RenderService = ({ service }) => {
       style={{
         backgroundImage: `url(${img})`,
       }}
-      className="basis-[32%] bg-center bg-no-repeat w-full h-[23rem]  bg-cover relative z-20 rounded"
+      className=" basis-full md:basis-[48%] lg:basis-[31%] bg-center bg-no-repeat w-full h-[23rem]  bg-cover relative z-20 rounded"
     >
       <div className="overlay absolute top-0 right-0 z-30 bg-black opacity-60 w-full h-full"></div>
 
