@@ -10,7 +10,7 @@ const Navbar = () => {
           <h6>Ink Tattoo Stuido</h6>
         </div> */}
       </div>
-      <ul className="flex items-center justify-center gap-12 flex-1 mx-auto">
+      <ul className="flex items-center justify-center gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
         <Link to={"/"}>
           <li className="cursor-pointer">Home</li>
         </Link>

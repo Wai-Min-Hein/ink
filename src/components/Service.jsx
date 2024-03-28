@@ -6,39 +6,22 @@ const Service = () => {
         {
             id: 1,
             img: '/images/service1.png',
-            title: "TATTOO DESIGN",
-            text: "Nullam congue rutrum nisl nec bibendum. Praesent porta nisl ipsum, id porttitor nulla iaculis sit amet sed nec purus."
+            title: "Tattoo Design",
+            text: "Transform your vision into reality with our tailored tattoo design service. Our artists specialize in bringing your ideas to life with precision and creativity."
         },
         {
             id: 2,
-            img: '/images/service1.png',
-            title: "TATTOO DESIGN",
-            text: "Nullam congue rutrum nisl nec bibendum. Praesent porta nisl ipsum, id porttitor nulla iaculis sit amet sed nec purus."
+            img: 'https://i.pinimg.com/236x/4c/de/08/4cde08db5c12910ed83cab60be8844c4.jpg',
+            title: "Realastic  Tattoo",
+            text: "Elevate your ink with our hyper-realistic tattoo design service. Our artists specialize in intricate details, bringing your ideas to life with stunning realism."
         },
         {
             id: 3,
-            img: '/images/service1.png',
-            title: "TATTOO DESIGN",
-            text: "Nullam congue rutrum nisl nec bibendum. Praesent porta nisl ipsum, id porttitor nulla iaculis sit amet sed nec purus."
+            img: 'https://i.pinimg.com/236x/c1/c3/00/c1c3001871bd42e8d903365654148d97.jpg',
+            title: "Tattoo Removal",
+            text: "Let go of the past with our advanced tattoo removal service. Our gentle yet effective treatments erase unwanted ink, offering a clean canvas for new beginnings."
         },
-        {
-            id: 4,
-            img: '/images/service1.png',
-            title: "TATTOO DESIGN",
-            text: "Nullam congue rutrum nisl nec bibendum. Praesent porta nisl ipsum, id porttitor nulla iaculis sit amet sed nec purus."
-        },
-        {
-            id: 5,
-            img: '/images/service1.png',
-            title: "TATTOO DESIGN",
-            text: "Nullam congue rutrum nisl nec bibendum. Praesent porta nisl ipsum, id porttitor nulla iaculis sit amet sed nec purus."
-        },
-        {
-            id: 6,
-            img: '/images/service1.png',
-            title: "TATTOO DESIGN",
-            text: "Nullam congue rutrum nisl nec bibendum. Praesent porta nisl ipsum, id porttitor nulla iaculis sit amet sed nec purus."
-        }
+        
     ]
   return <section className="container mx-auto mt-24">
     <div className="text-center">

@@ -52,10 +52,10 @@ const Blog = () => {
 
       <section className="container mx-auto mt-16">
         <div className="text-center pb-16">
-          <p>Check out ours</p>
-          <h1>Blogs & News</h1>
+          <p className="text-xl italic font-[500] capitalize">Check out ours</p>
+          <h1 className="my-4 leading-[1.2] tracking-wider text-5xl font-[500]">Blogs & News</h1>
 
-          <p className="w-1/2 mx-auto text-center">
+          <p className="w-1/2 mx-auto text-center text-md text-[1.2rem] tracking-normal leading-tight">
           Delve into our insights, trends, and tips curated by our experts. Stay informed, inspired, and connected with the latest in the tattoo world
           </p>
         </div>
@@ -70,16 +70,23 @@ const Blog = () => {
                   alt=""
                 />
               </div>
-              <div className="flex gap-3 items-center justify-start">
-                <FaCalendarAlt />
-                <p>September 12, 2022</p>
-              </div>
-              <h6 className="">{blog.title}</h6>
-              <p>{blog.para}</p>
+              <h6 className="my-4 text-lg font-[500] px-4 tracking-wider">
+              {blog.title}
+            </h6>
 
-              <button onClick={() => nav(`/blogs/${blog.id}`)}>
-                Read More
-              </button>
+            <div className="flex gap-3 items-center justify-start px-4">
+              <FaCalendarAlt />
+              <p className="tracking-wide">September 12, 2022</p>
+            </div>
+            <p className="text-lg font-normal tracking-wide leading-tight px-4 py-4">
+              {blog.para}
+            </p>
+
+            <div className="px-4">
+
+            <button className="px-4 border border-white rounded-sm py-2" onClick={() => nav(`/blogs/${blog.id}`)}>Read More</button>
+            </div>
+
             </div>
           ))}
         </div>
