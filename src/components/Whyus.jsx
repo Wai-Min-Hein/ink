@@ -1,6 +1,12 @@
+import { motion,useMotionValue  } from "framer-motion";
+
+
+
 const Whyus = () => {
+  const x = useMotionValue(0)
+  console.log(x)
   return (
-    <section className="flex items-start justify-start gap-12  container mx-auto mt-20">
+    <section  className="flex items-start justify-start gap-12  container mx-auto mt-20">
       <div className="photo flex-1 relative">
         <div className="relative z-10">
           <img
@@ -43,8 +49,31 @@ const Whyus = () => {
             <h6 className="mb-2 text-lg font-[500] tracking-widest">
               Experience
             </h6>
-            <div className="p-[.2rem]  overflow-hidden bg-transparent relative z-10">
-              <div className="bg-white w-[90%] h-full absolute z-20 top-0 left-0"></div>
+            <div className="p-[.2rem]  w-full bg-transparent relative z-10">
+              <motion.p
+              initial={{ x: 0 }}
+              whileInView={{
+                x: '90%',
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 2,
+              }}
+               className="absolute z-30 top-[-2rem] w-full">50%</motion.p>
+              <motion.div
+              initial={{ width: 0 }}
+              whileInView={{
+                width: "90%",
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 2,
+              }}
+              className="bg-white w-[90%] h-full absolute z-20 top-0 left-0 rounded-sm"></motion.div>
             </div>
           </div>
 

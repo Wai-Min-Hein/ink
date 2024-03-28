@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram,FaTelegram  } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaTelegram } from "react-icons/fa6";
 import { SiViber } from "react-icons/si";
 
 import logo from "/images/golden-logo.png";
@@ -36,23 +36,22 @@ const Footer = () => {
       </ul>
 
       <div className="mb-6">
-        <p className="w-1/2 mx-auto text-center">
-        Join our community of tattoo enthusiasts and become a part of something bigger than just ink on skin.
+        <p className="w-2/5 mx-auto text-center text-lg font-normal capitalize tracking-wide">
+          Join our community of tattoo enthusiasts and become a part of
+          something bigger than just ink on skin.
         </p>
       </div>
 
-        <div className="flex gap-4 justify-center mb-6">
-          <FaFacebook size={24} />
-          <FaInstagram size={24} />
-          <SiViber size={24} />
-          <FaTelegram size={24} />
-        </div>
-
+      <div className="flex gap-4 justify-center mb-6">
+        <FaFacebook className="cursor-pointer" size={24} />
+        <FaInstagram className="cursor-pointer" size={24} />
+        <SiViber className="cursor-pointer" size={24} />
+        <FaTelegram className="cursor-pointer" size={24} />
+      </div>
 
       <div className=" container mx-auto flex items-center justify-between border-t border-white py-8">
-
         <div className="text-center w-full">
-          <h6>Designed by Ink Studio. @2024 All rights reserved</h6>
+          <h6 className="text-lg font-normal capitalize tracking-wide">Designed by Ink Studio. @2024 All rights reserved</h6>
         </div>
       </div>
     </footer>

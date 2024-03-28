@@ -36,15 +36,15 @@ const BlogDetails = () => {
   return (
     <section className="w-screen overflow-hidden">
       <div className=" container mx-auto">
-        <h1>{title}</h1>
+        <h1 className="my-4 leading-[1.2] tracking-wider text-[2.75rem] font-[500]">
+          {title}
+        </h1>
 
-        <img
-          src={img}
-          alt=""
-          className="w-screen object-cover rounded-md mt-8"
-        />
+        <img src={img} alt="" className="w-1/3 object-cover rounded-md mt-8" />
 
-        <p className="text-lg mt-4">{para}</p>
+        <p className="text-lg mt-6 font-normal capitalize tracking-wide leading-snug">
+          {para}
+        </p>
       </div>
     </section>
   );
