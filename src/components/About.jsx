@@ -64,12 +64,12 @@ const About = () => {
         <div className="relative z-10">
           <img
             src="/images/about-image.png"
-            className="w-full md:w-4/5 h-screen object-cover"
+            className=" md:w-4/5 sm:h-screen object-cover w-screen  sm:object-contain"
             alt=""
           />
         </div>
 
-        <div className="absolute z-20 border border-white bg-black px-8 py-6 w-1/2 top-20 right-0">
+        <div className="relative ssm:absolute z-20 border border-white bg-black px-8 py-6 w-full ssm:w-2/3 md:w-1/2 top-20 right-0">
           <h6 className="text-center">Working Hours</h6>
 
           <div className="flex flex-col gap-5 mt-8">

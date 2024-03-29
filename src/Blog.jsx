@@ -52,42 +52,81 @@ const Blog = () => {
 
       <section className="container mx-auto mt-16">
         <div className="text-center pb-16">
-          <p className="text-xl italic font-[500] capitalize">Check out ours</p>
-          <h1 className="my-4 leading-[1.2] tracking-wider text-5xl font-[500]">Blogs & News</h1>
+          <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl font-[500] italic capitalize">
+            Check out ours
+          </p>
+          <h1 className="uppercase text-xl ssm:text-3xl sm:text-[2.5rem] md:text-5xl lg:text-7xl font-semibold tracking-widest py-4">
+            Blogs & News
+          </h1>
 
-          <p className="w-1/2 mx-auto text-center text-md text-[1.2rem] tracking-normal leading-tight">
-          Delve into our insights, trends, and tips curated by our experts. Stay informed, inspired, and connected with the latest in the tattoo world
+          <p className="w-3/4 mx-auto text-md text-[1.2rem] tracking-normal leading-tight sm:w-full px-3 sm:px-6 md:px-0 md:w-4/5 lg:w-2/3">
+            Delve into our insights, trends, and tips curated by our experts.
+            Stay informed, inspired, and connected with the latest in the tattoo
+            world
           </p>
         </div>
 
         <div className="photo flex-1 flex items-center justify-between flex-wrap gap-y-6">
           {blogs.map((blog) => (
-            <div className="basis-[32%]" key={blog.id}>
-              <div className="">
-                <img
-                  src={blog.img}
-                  className="w-full h-60 object-cover mb-4 rounded-md"
-                  alt=""
-                />
-              </div>
-              <h6 className="my-4 text-lg font-[500] px-4 tracking-wider">
-              {blog.title}
-            </h6>
+            // <div className="basis-full ssm:basis-[48%] md:basis-[32%]" key={blog.id}>
+            //   <div className="">
+            //     <img
+            //       src={blog.img}
+            //       className="w-full h-60 object-cover mb-4 rounded-md"
+            //       alt=""
+            //     />
+            //   </div>
+            //   <h6 className="my-4 text-lg font-[500] px-4 tracking-wider">
+            //     {blog.title}
+            //   </h6>
 
-            <div className="flex gap-3 items-center justify-start px-4">
-              <FaCalendarAlt />
-              <p className="tracking-wide">September 12, 2022</p>
-            </div>
-            <p className="text-lg font-normal tracking-wide leading-tight px-4 py-4">
-              {blog.para}
-            </p>
+            //   <div className="flex gap-3 items-center justify-start px-4">
+            //     <FaCalendarAlt />
+            //     <p className="tracking-wide">September 12, 2022</p>
+            //   </div>
+            //   <p className="text-lg font-normal tracking-wide leading-tight px-4 py-4">
+            //     {blog.para}
+            //   </p>
 
-            <div className="px-4">
+            //   <div className="px-4">
+            //     <button
+            //       className="px-4 border border-white rounded-sm py-2"
+            //       onClick={() => nav(`/blogs/${blog.id}`)}
+            //     >
+            //       Read More
+            //     </button>
+            //   </div>
+            // </div>
 
-            <button className="px-4 border border-white rounded-sm py-2" onClick={() => nav(`/blogs/${blog.id}`)}>Read More</button>
-            </div>
+<div className="basis-full mx-auto ssm:mx-0 ssm:basis-[49%]" key={blog.id}>
+<div className="">
+  <img
+    src={blog.img}
+    className="w-full h-60 object-cover mb-4 rounded-md"
+    alt=""
+  />
+</div>
+<h6 className="my-4 text-lg font-[500] md:px-4 tracking-wider">
+  {blog.title}
+</h6>
 
-            </div>
+<div className="flex gap-3 items-center justify-start md:px-4">
+  <FaCalendarAlt />
+  <p className="tracking-wide">September 12, 2022</p>
+</div>
+<p className="text-lg font-normal tracking-wide leading-tight md:px-4 py-4">
+  {blog.para}
+</p>
+
+<div className="px-4">
+  <button
+    className="px-4 border border-white rounded-sm py-2"
+    onClick={() => nav(`/blogs/${blog.id}`)}
+  >
+    Read More
+  </button>
+</div>
+</div>
           ))}
         </div>
       </section>
