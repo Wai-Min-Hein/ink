@@ -21,6 +21,7 @@
 body {
   overflow-x: hidden;
   width: 100vw;
+  background: #0d0d0d;
 }
 p,
 span {
