@@ -69,7 +69,7 @@ const About = () => {
           />
         </div>
 
-        <div className="relative ssm:absolute z-20 border border-white bg-black px-8 py-6 w-full ssm:w-2/3 md:w-1/2 top-20 right-0">
+        <div className="relative ssm:absolute z-20 border border-white bg-black px-8 py-6 w-[95%] ssm:w-2/3 md:w-1/2 top-20 right-0">
           <h6 className="text-center">Working Hours</h6>
 
           <div className="flex flex-col gap-5 mt-8">
