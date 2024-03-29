@@ -46,12 +46,12 @@ const Whyus = () => {
         <div className="relative z-10">
           <img
             src="/images/why-us.png"
-            className="w-full h-[90vh] object-cover"
+            className="w-full  md:h-[90vh] object-cover"
             alt=""
           />
         </div>
 
-        <div className="absolute z-20 border border-white bg-black px-6 py-16 w-1/2 top-20 left-[-8rem]">
+        <div className="absolute z-20 border border-white bg-black px-6 py-16 w-1/2 top-20 lg:left-[-6rem] ">
           <h6 className="text-center">
             <span>
               {" "}

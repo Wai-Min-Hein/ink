@@ -5,7 +5,7 @@ import { GrMapLocation } from "react-icons/gr";
 
 const ContactUs = () => {
   return (
-    <section className="container mx-auto w-screen flex items-center justify-between gap-4 mt-6">
+    <section className="lg:container lg:mx-auto px-6 lg:px-0 w-screen flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
       <div className="basis-1/2">
         <div className="">
           <p className="text-xl italic font-[500] capitalize">Contact us</p>
@@ -87,8 +87,8 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <div className="basis-1/2 mx-auto grid place-items-center">
-        <div className="border border-white w-3/5 h-4/5 rounded-md py-20 shadow-md">
+      <div className="basis-full md:basis-1/2 mx-auto grid place-items-center">
+        <div className="border border-white w-full md:w-4/5 h-4/5 rounded-md py-20 shadow-md">
           <h1 className="pb-6 border-b bprder-white px-8 text-4xl">
             Thank for intresting
           </h1>

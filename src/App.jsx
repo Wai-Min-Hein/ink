@@ -10,12 +10,12 @@ const App = () => {
   return (
     <main className="w-screen overflow-hidden">
       <Hero />
-      <About/>
-      <Service/>
-      <Whyus/>
-      <Artwork/>
-      <Team/>
-      <BlogComponent/>
+      <About />
+      <Service />
+      <Whyus />
+      <Artwork />
+      <Team />
+      <BlogComponent />
     </main>
   );
 };
