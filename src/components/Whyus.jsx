@@ -11,7 +11,6 @@ import { useEffect, useRef } from "react";
 const Whyus = () => {
   const ref = useRef(null);
 
-  const test = 3;
 
   const ifView = useInView(ref);
 
@@ -40,7 +39,7 @@ const Whyus = () => {
   return (
     <section
       ref={ref}
-      className="flex  flex-col-reverse lg:flex-row  items-start justify-start gap-12 px-4 xl:px-0  xl:container  mx-auto mt-20"
+      className="flex  flex-col-reverse lg:flex-row  items-start justify-start gap-12 px-4 xl:px-0 xl:container  xl:mx-auto mt-20"
     >
       <div className="photo flex-1 self-center relative">
         <div className="relative z-10">
@@ -61,12 +60,12 @@ const Whyus = () => {
           </h6>
         </div>
       </div>
-      <div className="content  basis-1/2">
-        <p className="text-xl italic font-[500]">Why Choose us</p>
-        <h1 className="my-4 leading-[1.2] tracking-wider text-5xl font-[500]">
+      <div className="content  lg:basis-1/2 ">
+        <p className="text-xl italic font-[400]">Why Choose us</p>
+        <h1 className="my-4 leading-[1.2] tracking-wider text-xl sm:text-2xl md:text-4xl xl:text-[2.5rem] 2xl:text-5xl font-[500]">
           ALWAYS PROVIDE SATISFACTORY WORK
         </h1>
-        <p className="text-md text-[1.2rem] tracking-wide leading-tight">
+        <p className="text-[1.2rem] tracking-wide leading-tight">
           Exceptional artistry, personalized service, and a dedication to
           exceeding your tattoo expectations define our commitment From design
           to execution, we maintain the highest standards of artistry and
