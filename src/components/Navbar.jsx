@@ -41,9 +41,12 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="">
+          <Link to={'https://waiminhein.vercel.app/'}> 
+          
           <button className="px-2 py-1 border border-white rounded-sm">
             Login
           </button>
+          </Link>
         </div>
       </div>
       <div className="block sm:hidden cursor-pointer">
@@ -79,9 +82,12 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="mx-auto">
+        <Link to={'https://waiminhein.vercel.app/'}> 
+          
           <button className="px-2 py-1 border border-white rounded-sm">
             Login
           </button>
+          </Link>
         </div>
       </div>
     </nav>

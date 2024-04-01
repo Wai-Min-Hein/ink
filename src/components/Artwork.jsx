@@ -1,6 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const Artwork = () => {
+  const[fetchData, setFetchData] = useState([])
+
+  useEffect(() => {
+
+    const getData = async () => {
+    const data =  await axios.get('https://fakestoreapi.com/products')
+    setFetchData(data.data)
+    }
+
+ 
+
+    getData()
+  }, [])
+
+
+
   const artWorks = [
     {
       id: 1,
