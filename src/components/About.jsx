@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <section className="flex flex-col lg:flex-row items-start justify-start gap-12 px-4 xl:px-0  xl:container mx-auto  w-screen min-h-screen mt-8">
+    <section className="flex flex-col lg:flex-row items-start justify-start gap-12 px-4 xl:px-0  xl:container mx-auto  min-h-screen mt-8">
       <div className="content  basis-[43%]">
         <p className="text-xl italic font-[400]">About Ink Studio</p>
         <h1 className="my-4 leading-[1.2] tracking-wider text-xl sm:text-2xl md:text-4xl xl:text-[2.5rem] 2xl:text-5xl font-[500]">
@@ -60,7 +60,7 @@ const About = () => {
         </div>
         <button className="mt-12 nBtn">More About Us</button>
       </div>
-      <div className="photo flex-1 self-center relative flex lg:flex-col">
+      <div className="photo flex-1 self-center relative flex flex-col md:flex-row">
         <div className="relative z-10">
           <img
             src="/images/about-image.png"
@@ -69,7 +69,7 @@ const About = () => {
           />
         </div>
 
-        <div className="relative lg:absolute z-20 border border-white bg-black px-8 py-6 w-[95%] ssm:w-2/3 md:w-4/5 xl:w-1/2 top-20 right-0">
+        <div className="relative md:absolute z-20 border border-white bg-black px-8 py-6 w-[95%] ssm:w-2/3 md:w-4/5 xl:w-1/2 top-20 right-0">
           <h6 className="text-center">Working Hours</h6>
 
           <div className="flex flex-col gap-5 mt-8">

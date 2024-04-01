@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -34,7 +35,15 @@ const BlogComponent = () => {
   const selectedBlogs = blogs.slice(0, 2);
   return (
     <section className="flex flex-col lg:flex-row items-start justify-between md:container md:mx-auto px-4 md:px-0 mt-32 w-screen gap-4">
-      <div className="basis-[35%]">
+      <motion.div 
+       initial={{ y: "100%", opacity: 0 }}
+       whileInView={{
+         y: 0,
+         opacity: 1,
+       }}
+       viewport={{ once: true }}
+       transition={{ duration: 2 }}
+      className="basis-[35%]">
         <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl font-[500] italic capitalize">
           Checkout our
         </p>
@@ -46,8 +55,16 @@ const BlogComponent = () => {
           informed, inspired, and connected with the latest in the tattoo world
         </p>
         <button className="nBtn mt-4">View all News</button>
-      </div>
-      <div className="photo flex-1 flex items-center justify-between flex-wrap gap-y-6">
+      </motion.div>
+      <motion.div
+       initial={{ y: "-100%", opacity: 0 }}
+       whileInView={{
+         y: 0,
+         opacity: 1,
+       }}
+       viewport={{ once: true }}
+       transition={{ duration: 2 }}
+       className="photo flex-1 flex items-center justify-between flex-wrap gap-y-6">
         {selectedBlogs.map((blog) => (
           <div className="basis-full mx-auto ssm:mx-0 ssm:basis-[49%]" key={blog.id}>
             <div className="">
@@ -79,7 +96,7 @@ const BlogComponent = () => {
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

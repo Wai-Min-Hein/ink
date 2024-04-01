@@ -4,7 +4,7 @@ const RenderService = ({ service }) => {
   const { title, text, img } = service;
   return (
     
-<div className="basis-full md:basis-[48%] lg:basis-[31%] relative z-20 rounded">
+<div className="basis-full md:basis-[49%] lg:basis-[32%] relative z-20 rounded">
       <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]  h-auto rounded-xl p-6 border  ">
         <CardItem

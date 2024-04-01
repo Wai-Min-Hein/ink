@@ -166,12 +166,12 @@ const ArtistDetail = () => {
   }
 
   return (
-    <main className="w-screen overflow-hidden">
+    <main className=" ">
       <section
         style={{
           backgroundImage: `url(${bg})`,
         }}
-        className={`relative w-screen h-[40vh] object-cover bg-center bg-cover z-20 `}
+        className={`relative  h-[40vh] object-cover bg-center bg-cover z-20 `}
       >
         <div className="overlay absolute top-0 right-0 z-30 bg-black opacity-40 w-full h-full"></div>
 

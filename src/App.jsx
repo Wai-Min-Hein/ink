@@ -12,25 +12,18 @@ const App = () => {
   const lg = useMediaQuery({ query: "(min-width: 1024px)" });
   return (
     <main className="">
-        <Hero/>
+      <Hero />
 
-
-      
-        {lg? (
-          <div className="flex flex-col overflow-hidden">
-          <ContainerScroll titleComponent={
-          
-          <></>
-        }
-        >
-        <About />
-  
-  
-        </ContainerScroll>
+      {lg ? (
+        <div className="flex flex-col overflow-hidden">
+          <ContainerScroll titleComponent={<></>}>
+            <About />
+          </ContainerScroll>
         </div>
-        ): <About/>}
-      
-      
+      ) : (
+        <About />
+      )}
+
       <Service />
       <Whyus />
       <Artwork />

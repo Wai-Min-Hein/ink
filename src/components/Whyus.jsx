@@ -39,7 +39,16 @@ const Whyus = () => {
       ref={ref}
       className="flex  flex-col-reverse lg:flex-row  items-start justify-start gap-12 px-4 xl:px-0 xl:container  xl:mx-auto mt-20"
     >
-      <div className="photo flex-1 self-center relative">
+      <motion.div
+        initial={{ x: "100%", opacity: 0 }}
+        whileInView={{
+          x: 0,
+          opacity: 1,
+        }}
+        viewport={{ once: true }}
+        transition={{ duration: 2 }}
+        className="photo flex-1 self-center relative"
+      >
         <div className="relative z-10">
           <img
             src="/images/why-us.png"
@@ -57,8 +66,17 @@ const Whyus = () => {
             <span className="block">SATISFY CUSTOMERS</span>
           </h6>
         </div>
-      </div>
-      <div className="content  lg:basis-1/2 ">
+      </motion.div>
+      <motion.div
+        initial={{ x: "-100%",opacity:0 }}
+        whileInView={{
+          x: 0,
+          opacity:1
+        }}
+        viewport={{ once: true }}
+        transition={{ duration: 2 }}
+        className="content  lg:basis-1/2 "
+      >
         <p className="text-xl italic font-[400]">Why Choose us</p>
         <h1 className="my-4 leading-[1.2] tracking-wider text-xl sm:text-2xl md:text-4xl xl:text-[2.5rem] 2xl:text-5xl font-[500]">
           ALWAYS PROVIDE SATISFACTORY WORK
@@ -184,7 +202,7 @@ const Whyus = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

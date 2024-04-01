@@ -6,6 +6,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Button, Modal, Select, Text } from "@mantine/core";
 
 import "@mantine/core/styles.css";
+import { LayoutGrid } from "./ui/layout-grid";
 
 const Artwork = () => {
   const [fetchData, setFetchData] = useState([]);
@@ -84,8 +85,7 @@ const Artwork = () => {
     },
   ];
 
-  const [currentImg, setCurrentImg] = useState('')
-
+  const [currentImg, setCurrentImg] = useState("");
 
   // const xl = useMediaQuery({ query: "(min-width: 1280px)" });
   // const lg = useMediaQuery({ query: "(min-width: 1024px)" });
@@ -108,7 +108,7 @@ const Artwork = () => {
   // });
 
   return (
-    <section className="xl:container px-4 xl:px-0 mx-auto mt-12 relative">
+    <section className="xl:container px-4 xl:px-0 mx-auto mt-12 relative ">
       <div className="text-center">
         <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl  italic font-[400]">
           some of our
@@ -122,12 +122,12 @@ const Artwork = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 md:grid-cols-5 min-h-[60vh] mt-12 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-5 min-h-[360vh] md:min-h-[200vh] lg:min-h-[160vh] mt-12 ">
         {chunkedArrays?.map((array, index) => (
-          <div key={index} className="flex flex-col gap-y-4">
-            {array.map((art, index) => (
+          <div key={index} className="flex flex-col gap-y-4 h-auto">
+            {/* {array.map((art, index) => (
               <div key={index} className="rounded-md">
-                
+
                 <img
                   onClick={(e) => (open(), setCurrentImg(e.target.src))}
                   className="w-full object-cover object-center grayscale-50 rounded-md cursor-pointer"
@@ -144,7 +144,8 @@ const Artwork = () => {
                   />
                 </Modal>
               </div>
-            ))}
+            ))} */}
+            <LayoutGrid key={index} cards={array} />
           </div>
         ))}
       </div>

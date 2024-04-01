@@ -1,6 +1,5 @@
 import RenderService from "./RenderService";
 
-
 const Service = () => {
   const services = [
     {
@@ -25,13 +24,6 @@ const Service = () => {
 
   return (
     <section className="container mx-auto mt-24">
-
-    
-
-
-
-
-
       <div className="text-center">
         <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl font-[400] italic capitalize">
           Services
@@ -45,7 +37,7 @@ const Service = () => {
         </p>
       </div>
 
-      <div className="flex items-center justify-start flex-wrap mt-12 gap-6">
+      <div className="flex items-center justify-between flex-wrap mt-12 ">
         {services.map((service) => (
           <RenderService key={service.id} service={service} />
         ))}

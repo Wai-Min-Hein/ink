@@ -34,7 +34,7 @@ const BlogDetails = () => {
   const { title, img, para } = currentBlog[0];
 
   return (
-    <section className="w-screen overflow-hidden">
+    <section className="">
       <div className=" container mx-auto">
         <h1 className="my-4 leading-[1.2] tracking-wider text-[2.75rem] font-[500]">
           {title}
