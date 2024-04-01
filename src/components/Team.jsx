@@ -2,8 +2,26 @@ import { FaFacebook } from "react-icons/fa6";
 import { SiViber } from "react-icons/si";
 import { FiPhoneCall } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Team = () => {
+
+  const[fetchData, setFetchData] = useState([])
+
+  useEffect(() => {
+
+    const getData = async () => {
+    const data =  await axios.get('https://fakestoreapi.com/products')
+    setFetchData(data.data)
+    }
+
+ 
+
+    getData()
+  }, [])
+
+
   const artists = [
     {
       id: 1,

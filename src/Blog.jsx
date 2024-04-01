@@ -2,8 +2,24 @@ import { FaCalendarAlt } from "react-icons/fa";
 
 import bg from "/images/hero-image.png";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Blog = () => {
+
+  const[fetchData, setFetchData] = useState([])
+
+  useEffect(() => {
+
+    const getData = async () => {
+    const data =  await axios.get('https://fakestoreapi.com/products')
+    setFetchData(data.data)
+    }
+
+ 
+
+    getData()
+  }, [])
   const blogs = [
     {
       id: 1,
