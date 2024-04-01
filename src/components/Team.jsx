@@ -22,6 +22,7 @@ const Team = () => {
   }, [])
 
 
+
   const artists = [
     {
       id: 1,
@@ -226,6 +227,9 @@ const Team = () => {
           </button>
         )}
       </div>
+
+
+      
     </section>
   );
 };
