@@ -2,22 +2,24 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
+import { useDisclosure } from "@mantine/hooks";
+import { Button, Modal, Select, Text } from "@mantine/core";
+
+import "@mantine/core/styles.css";
+
 const Artwork = () => {
-  const[fetchData, setFetchData] = useState([])
+  const [fetchData, setFetchData] = useState([]);
+
+  const [opened, { open, close }] = useDisclosure(false);
 
   useEffect(() => {
-
     const getData = async () => {
-    const data =  await axios.get('https://fakestoreapi.com/products')
-    setFetchData(data.data)
-    }
+      const data = await axios.get("https://fakestoreapi.com/products");
+      setFetchData(data.data);
+    };
 
- 
-
-    getData()
-  }, [])
-
-
+    getData();
+  }, []);
 
   const artWorks = [
     {
@@ -82,6 +84,9 @@ const Artwork = () => {
     },
   ];
 
+  const [currentImg, setCurrentImg] = useState('')
+
+
   // const xl = useMediaQuery({ query: "(min-width: 1280px)" });
   // const lg = useMediaQuery({ query: "(min-width: 1024px)" });
   const md = useMediaQuery({ query: "(min-width: 768px)" });
@@ -103,7 +108,7 @@ const Artwork = () => {
   // });
 
   return (
-    <section className="xl:container px-4 xl:px-0 mx-auto mt-12">
+    <section className="xl:container px-4 xl:px-0 mx-auto mt-12 relative">
       <div className="text-center">
         <p className="text-[1.05rem] md:text-[1.1rem] lg:text-xl  italic font-[400]">
           some of our
@@ -122,11 +127,22 @@ const Artwork = () => {
           <div key={index} className="flex flex-col gap-y-4">
             {array.map((art, index) => (
               <div key={index} className="rounded-md">
+                
                 <img
-                  className="w-full object-cover object-center grayscale-50 rounded-md"
+                  onClick={(e) => (open(), setCurrentImg(e.target.src))}
+                  className="w-full object-cover object-center grayscale-50 rounded-md cursor-pointer"
                   src={art.img}
                   alt="gallery-photo"
                 />
+
+                <Modal opened={opened} onClose={close} className=" overflow-y-hidden">
+                  <img
+                    onClick={() => open()}
+                    className="w-full object-cover h-screen"
+                    src={currentImg}
+                    alt="gallery-photo"
+                  />
+                </Modal>
               </div>
             ))}
           </div>

@@ -11,7 +11,6 @@ import { useEffect, useRef } from "react";
 const Whyus = () => {
   const ref = useRef(null);
 
-
   const ifView = useInView(ref);
 
   const count = useMotionValue(0);
@@ -24,16 +23,15 @@ const Whyus = () => {
   const rounded3 = useTransform(count3, Math.round);
 
   useEffect(() => {
-     ifView && animate(count, 90, { duration: 2 });
+    ifView && animate(count, 90, { duration: 2 });
   }, [count, ifView]);
 
-
   useEffect(() => {
-     ifView && animate(count2, 74, { duration: 2 });
+    ifView && animate(count2, 74, { duration: 2 });
   }, [count2, ifView]);
 
   useEffect(() => {
-     ifView && animate(count3, 64, { duration: 2 });
+    ifView && animate(count3, 64, { duration: 2 });
   }, [count3, ifView]);
 
   return (
@@ -78,35 +76,28 @@ const Whyus = () => {
           tattoo reflects your unique style and personality.
         </p>
 
-        <div className="mt-6">
+        <div className="mt-6 overflow-x-hidden">
           <div className="">
             <h6 className="mb-2 text-lg font-[500] tracking-widest">
               Experience
             </h6>
             <div className="p-[.2rem]  w-full bg-transparent relative z-10">
-              <motion.div
-              initial={{ x: 0 }}
-              whileInView={{
-                x: "90%",
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 2,
-              }}
-              
-              className="absolute z-30 top-[-2rem] w-full flex items-start gap-1">
-                
               <motion.span
-                
-                className=""
+                initial={{ x: 0 }}
+                whileInView={{
+                  x: "90%",
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 2,
+                }}
+                className="absolute z-30 top-[-2rem] w-full flex items-start gap-1"
               >
-                {rounded}
-                
+                <motion.span className="">{rounded}</motion.span>
+                <span> %</span>
               </motion.span>
-              <span> %</span>
-              </motion.div>
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{
@@ -124,32 +115,23 @@ const Whyus = () => {
           </div>
 
           <div className="my-4">
-            <h6 className="mb-2 text-lg font-[500] tracking-widest">
-              Tattoo
-            </h6>
+            <h6 className="mb-2 text-lg font-[500] tracking-widest">Tattoo</h6>
             <div className="p-[.2rem]  w-full bg-transparent relative z-10">
               <motion.div
-              initial={{ x: 0 }}
-              whileInView={{
-                x: "74%",
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 2,
-              }}
-              
-              className="absolute z-30 top-[-2rem] w-full flex items-start gap-1">
-                
-              <motion.span
-                
-                className=""
+                initial={{ x: 0 }}
+                whileInView={{
+                  x: "74%",
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 2,
+                }}
+                className="absolute z-30 top-[-2rem] w-full flex items-start gap-1"
               >
-                {rounded2}
-                
-              </motion.span>
-              <span> %</span>
+                <motion.span className="">{rounded2}</motion.span>
+                <span> %</span>
               </motion.div>
               <motion.div
                 initial={{ width: 0 }}
@@ -168,32 +150,23 @@ const Whyus = () => {
           </div>
 
           <div className="">
-            <h6 className="mb-2 text-lg font-[500] tracking-widest">
-              Price
-            </h6>
+            <h6 className="mb-2 text-lg font-[500] tracking-widest">Price</h6>
             <div className="p-[.2rem]  w-full bg-transparent relative z-10">
               <motion.div
-              initial={{ x: 0 }}
-              whileInView={{
-                x: "64%",
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 2,
-              }}
-              
-              className="absolute z-30 top-[-2rem] w-full flex items-start gap-1">
-                
-              <motion.span
-                
-                className=""
+                initial={{ x: 0 }}
+                whileInView={{
+                  x: "64%",
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 2,
+                }}
+                className="absolute z-30 top-[-2rem] w-full flex items-start gap-1"
               >
-                {rounded3}
-                
-              </motion.span>
-              <span> %</span>
+                <motion.span className="">{rounded3}</motion.span>
+                <span> %</span>
               </motion.div>
               <motion.div
                 initial={{ width: 0 }}
