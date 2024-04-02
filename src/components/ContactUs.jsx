@@ -3,10 +3,12 @@ import { LuPhoneCall } from "react-icons/lu";
 import { SlEnvolopeLetter } from "react-icons/sl";
 import { GrMapLocation } from "react-icons/gr";
 
+import contact from "./../../public/images/contact.svg";
+
 const ContactUs = () => {
   return (
-    <section className="lg:container lg:mx-auto px-6 lg:px-0 w-screen flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
-      <div className="basis-1/2">
+    <section className="lg:container lg:mx-auto px-6 lg:px-0  flex flex-col md:flex-row items-start justify-between gap-4 mt-10">
+      <div className="basis-[45%]">
         <div className="">
           <p className="text-xl italic font-[500] capitalize">Contact us</p>
           <h1 className="my-4 leading-[1.2] tracking-wider text-5xl font-[500]">
@@ -62,6 +64,14 @@ const ContactUs = () => {
         </div>
 
         <div className="mt-8">
+          <h6 className="mb-4 px-8 text-4xl">Thank for intresting</h6>
+          <div className="px-8 text-xl">
+            <p>We will be in touch.</p>
+            <p>Shortly!</p>
+          </div>
+        </div>
+
+        {/* <div className="mt-8">
           <div className="flex items-center justify-between border-b-2 border-dashed py-5">
             <h6>Mon - Fri</h6>
 
@@ -85,17 +95,36 @@ const ContactUs = () => {
               <p>09:00 - 20:00</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
-      <div className="basis-full md:basis-1/2 mx-auto grid place-items-center">
-        <div className="border border-white w-full md:w-4/5 h-4/5 rounded-md py-20 shadow-md">
-          <h1 className="pb-6 border-b bprder-white px-8 text-4xl">
-            Thank for intresting
-          </h1>
+      <div className="basis-full md:basis-1/2 mx-auto w-full h-full">
+        <div className="w-full h-full ">
+          <img src={contact} alt="" className="w-full h-full object-cover" />
+        </div>
 
-          <div className="px-8 text-xl">
-            <p>We will be in touch.</p>
-            <p>Shortly!</p>
+        <div className="w-4/5 mx-auto">
+          <div className="flex items-center justify-between border-b-2 border-dashed py-5">
+            <h6>Mon - Fri</h6>
+
+            <div className="">
+              <p>09:00 - 20:00</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between border-b-2 border-dashed py-5">
+            <h6>Saturday</h6>
+
+            <div className="">
+              <p>09:00 - 20:00</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between py-5">
+            <h6>Sunday</h6>
+
+            <div className="">
+              <p>09:00 - 20:00</p>
+            </div>
           </div>
         </div>
       </div>

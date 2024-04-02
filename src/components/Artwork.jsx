@@ -88,12 +88,13 @@ const Artwork = () => {
   const [currentImg, setCurrentImg] = useState("");
 
   // const xl = useMediaQuery({ query: "(min-width: 1280px)" });
-  // const lg = useMediaQuery({ query: "(min-width: 1024px)" });
+  const lg = useMediaQuery({ query: "(min-width: 1024px)" });
   const md = useMediaQuery({ query: "(min-width: 768px)" });
-  // const sm = useMediaQuery({ query: "(min-width: 640px)" });
+  const sm = useMediaQuery({ query: "(min-width: 640px)" });
   // const ssm = useMediaQuery({ query: "(min-width: 560px)" });
 
-  const numChunks = (md && 5) || 3;
+  // const numChunks = (md && 5) || 3;
+  const numChunks = (md && 5) || (sm ?4:3) ;
   const chunkSize = Math.ceil(artWorks.length / numChunks);
 
   // Split the array into chunks

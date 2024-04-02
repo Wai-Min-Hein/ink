@@ -34,7 +34,7 @@ const BlogComponent = () => {
 
   const selectedBlogs = blogs.slice(0, 2);
   return (
-    <section className="flex flex-col lg:flex-row items-start justify-between md:container md:mx-auto px-4 md:px-0 mt-32 w-screen gap-4">
+    <section className="flex flex-col lg:flex-row items-start justify-between md:container md:mx-auto px-4 md:px-0 mt-32 gap-4">
       <motion.div 
        initial={{ y: "100%", opacity: 0 }}
        whileInView={{

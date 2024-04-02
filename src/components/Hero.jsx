@@ -3,21 +3,14 @@ import { TypewriterEffect } from "./ui/typewriter-effect";
 
 const words = [
   {
-    text: "Make",
-  },
-  {
-    text: "Awesome",
+    text: "Ink",
   },
   {
     text: "Tattoo",
   },
   {
-    text: "with",
-  },
-  {
-    text: "Ink Tattoo Studio",
-    className: "text-blue-500 dark:text-blue-500",
-  },]
+    text: "Studio",
+  }]
 
 const Hero = () => {
   return (
@@ -29,8 +22,8 @@ const Hero = () => {
             We are here for you
           </p>
           <h1 className="uppercase text-xl ssm:text-3xl sm:text-[2.5rem] md:text-5xl lg:text-7xl font-semibold tracking-widest py-4">
-            {/* <TypewriterEffect words={words} /> */}
-            Ink Tattoo Studio
+            <TypewriterEffect words={words} />
+            {/* Ink Tattoo Studio */}
           </h1>
           <p className=" sm:w-full px-3 sm:px-6 md:px-0 md:w-4/5 lg:w-2/3 mx-auto text-xl tracking-wider">
             Discover the artistry of Ink Studio. Where creativity thrives, and

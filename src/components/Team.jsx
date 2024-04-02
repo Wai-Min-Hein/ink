@@ -4,6 +4,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BackgroundGradient } from "./ui/background-gradient";
 
 const Team = () => {
 
@@ -195,13 +196,16 @@ const Team = () => {
 
       <div className="flex items-center justify-between mt-8 flex-wrap gap-y-6">
         {limitedArtist.map((artist) => (
+          <BackgroundGradient  key={artist.id}>
+
+
           <div
             onClick={() => nav(`/team/${artist.id}`)}
             style={{
               backgroundImage: `url(${artist.img})`,
             }}
-            className="relative z-10 object-cover w-full h-[30rem] rounded-md bg-center bg-cover bg-no-repeat basis-4/5  mx-auto sm:mx-0 sm:basis-[48%] md:basis-[30%] cursor-pointer overflow-y-hidden grayscale-80 group "
-            key={artist.id}
+            className="relative z-10 object-cover w-full h-[30rem]  rounded-3xl bg-center bg-cover bg-no-repeat cursor-pointer overflow-y-hidden grayscale-80 blur-[3px] hover:blur-none duration-500 group "
+            // key={artist.id}
           >
             <div className="absolute z-20 w-full h-full bg-black group-hover:opacity-40 translate-y-[80%] opacity-0 group-hover:translate-y-[20%] duration-300 blur-3xl"></div>
             <div className="flex flex-col items-center mt-[80%] tran h-full translate-y-[100%] group-hover:translate-y-0 duration-700 relative z-30">
@@ -218,6 +222,7 @@ const Team = () => {
               </div>
             </div>
           </div>
+          </BackgroundGradient>
         ))}
       </div>
       <div className="grid place-items-center mt-8">
