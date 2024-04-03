@@ -17,7 +17,7 @@ export const LayoutGrid = ({ cards }) => {
   };
 
   return (
-    <div className="w-full h-full  grid grid-cols-1    gap-4 ">
+    <div className="w-full h-full  grid grid-cols-1    gap-4   !bg-[#0d0d0d] !text-[#d2d2d2]">
       {cards.map((card, i) => (
         <div key={i} 
         className={card.id % 2 === 0 ? 'row-span-2' : ''}

@@ -35,12 +35,12 @@ const BlogDetails = () => {
 
   return (
     <section className="">
-      <div className=" container mx-auto">
+      <div className=" container mx-auto w-full md:w-3/4">
         <h1 className="my-4 leading-[1.2] tracking-wider text-[2.75rem] font-[500]">
           {title}
         </h1>
 
-        <img src={img} alt="" className="w-1/3 object-cover rounded-md mt-8" />
+        <img src={img} alt="" className="w-full md:w-3/5 object-cover rounded-md mt-8" />
 
         <p className="text-lg mt-6 font-normal capitalize tracking-wide leading-snug">
           {para}

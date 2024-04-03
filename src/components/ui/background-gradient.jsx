@@ -16,7 +16,7 @@ export const BackgroundGradient = ({
     }
   }
   return (
-    <div className={cn("relative p-[4px] group  basis-4/5  mx-auto sm:mx-0 sm:basis-[48%] md:basis-[30%] ", containerClassName)}>
+    <div className={cn("relative p-[4px] group  basis-4/5  mx-auto sm:mx-0 sm:basis-[48%] md:basis-[30%]  !bg-[#0d0d0d] !text-[#d2d2d2] ", containerClassName)}>
       <motion.div
         variants={animate ? variants : undefined}
         initial={animate ? "initial" : undefined}
