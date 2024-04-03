@@ -29,7 +29,7 @@ export const ContainerScroll = ({ titleComponent, children }) => {
 
   return (
     <div
-      className="flex items-center justify-center relative  px-4 xl:px-0  xl:container mx-auto  w-screen min-h-screen"
+      className="flex items-center justify-center relative  px-4 xl:px-0  xl:container mx-auto  w-screen min-h-screen  !bg-[#0d0d0d] !text-[#d2d2d2]"
       ref={containerRef}
     >
       <div
