@@ -1,9 +1,23 @@
+import { useEffect, useState } from "react";
 import ContactUs from "./components/ContactUs";
 import bg from "/images/hero-image.png";
+import Loader from "./components/Loader";
 
 const Contact = () => {
+
+  
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
   return (
-    <main  className="">
+
+    <>
+
+    {loader ? <Loader />:(
+      <main  className="">
       <section
         style={{
           backgroundImage: `url(${bg})`,
@@ -24,6 +38,10 @@ const Contact = () => {
 
 
     </main>
+    )}
+    
+
+    </>
   )
 }
 

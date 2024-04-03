@@ -1,6 +1,18 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "./Loader";
+
 
 const BlogDetails = () => {
+
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
+
+
   const { id } = useParams();
 
   const blogs = [
@@ -34,19 +46,25 @@ const BlogDetails = () => {
   const { title, img, para } = currentBlog[0];
 
   return (
-    <section className="">
-      <div className=" container mx-auto w-full md:w-3/4">
-        <h1 className="my-4 leading-[1.2] tracking-wider text-[2.75rem] font-[500]">
-          {title}
-        </h1>
+    <>
 
-        <img src={img} alt="" className="w-full md:w-3/5 object-cover rounded-md mt-8" />
+    {loader ? <Loader />:(
+ <section className="">
+ <div className=" container mx-auto w-full md:w-3/4">
+   <h1 className="my-4 leading-[1.2] tracking-wider text-[2.75rem] font-[500]">
+     {title}
+   </h1>
 
-        <p className="text-lg mt-6 font-normal capitalize tracking-wide leading-snug">
-          {para}
-        </p>
-      </div>
-    </section>
+   <img src={img} alt="" className="w-full md:w-3/5 object-cover rounded-md mt-8" />
+
+   <p className="text-lg mt-6 font-normal capitalize tracking-wide leading-snug">
+     {para}
+   </p>
+ </div>
+</section>
+    )}
+   
+    </>
   );
 };
 
