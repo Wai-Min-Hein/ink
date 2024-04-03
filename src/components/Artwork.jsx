@@ -123,7 +123,7 @@ const Artwork = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-5 min-h-[360vh] md:min-h-[200vh] lg:min-h-[160vh] mt-12 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-5 min-h-[380vh] md:min-h-[200vh] lg:min-h-[160vh] mt-12 ">
         {chunkedArrays?.map((array, index) => (
           <div key={index} className="flex flex-col gap-y-4 h-auto">
             {/* {array.map((art, index) => (

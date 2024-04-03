@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 
 import { useEffect, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Whyus = () => {
   const ref = useRef(null);
@@ -34,17 +35,28 @@ const Whyus = () => {
     ifView && animate(count3, 64, { duration: 2 });
   }, [count3, ifView]);
 
+  const lg = useMediaQuery({ query: "(min-width: 1024px)" });
+  const md = useMediaQuery({ query: "(min-width: 768px)" });
+  const sm = useMediaQuery({ query: "(min-width: 640px)" });
+
   return (
     <section
       ref={ref}
       className="flex  flex-col-reverse lg:flex-row  items-start justify-start gap-12 px-4 xl:px-0 xl:container  xl:mx-auto mt-20"
     >
       <motion.div
-        initial={{ x: "100%", opacity: 0 }}
-        whileInView={{
-          x: 0,
-          opacity: 1,
-        }}
+        initial={lg ? { x: "100%", opacity: 0 } : { y: "80%", opacity: 0 }}
+        whileInView={
+          lg
+            ? {
+                x: 0,
+                opacity: 1,
+              }
+            : {
+                y: 0,
+                opacity: 1,
+              }
+        }
         viewport={{ once: true }}
         transition={{ duration: 2 }}
         className="photo flex-1 self-center relative"
@@ -68,11 +80,18 @@ const Whyus = () => {
         </div>
       </motion.div>
       <motion.div
-        initial={{ x: "-100%",opacity:0 }}
-        whileInView={{
-          x: 0,
-          opacity:1
-        }}
+        initial={lg ? { x: "-100%", opacity: 0 } : { y: "-80%", opacity: 0 }}
+        whileInView={
+          lg
+            ? {
+                x: 0,
+                opacity: 1,
+              }
+            : {
+                y: 0,
+                opacity: 1,
+              }
+        }
         viewport={{ once: true }}
         transition={{ duration: 2 }}
         className="content  lg:basis-1/2 "

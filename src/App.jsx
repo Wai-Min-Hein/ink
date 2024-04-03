@@ -7,29 +7,43 @@ import Whyus from "./components/Whyus";
 import Team from "./components/Team";
 import { ContainerScroll } from "./components/ui/container-scroll-animation";
 import { useMediaQuery } from "react-responsive";
+import { useEffect, useState } from "react";
+import Loader from "./components/Loader";
 
 const App = () => {
   const lg = useMediaQuery({ query: "(min-width: 1024px)" });
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
   return (
-    <main className="">
-      <Hero />
+    <>
+      {loader ? <Loader />: (
+        <main className="relative z-20">
+        <Hero />
 
-      {lg ? (
-        <div className="flex flex-col overflow-hidden">
-          <ContainerScroll titleComponent={<></>}>
-            <About />
-          </ContainerScroll>
-        </div>
-      ) : (
-        <About />
+        {lg ? (
+          <div className="flex flex-col overflow-hidden">
+            <ContainerScroll titleComponent={<></>}>
+              <About />
+            </ContainerScroll>
+          </div>
+        ) : (
+          <About />
+        )}
+
+        <Service />
+        <Whyus />
+        <Artwork />
+        <Team />
+        <BlogComponent />
+      </main>
       )}
 
-      <Service />
-      <Whyus />
-      <Artwork />
-      <Team />
-      <BlogComponent />
-    </main>
+      
+    </>
   );
 };
 

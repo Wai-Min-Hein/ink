@@ -18,30 +18,30 @@ const Navbar = () => {
 
       <div className="sm:flex items-center justify-between flex-1 hidden ">
         <ul className=" flex  items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
-          <Link to={"/"}>
+          <Link onClick={() => SetNav(false)}  to={"/"}>
             <li className="cursor-pointer">Home</li>
           </Link>
-          <Link to={"/team"}>
+          <Link onClick={() => SetNav(false)}  to={"/team"}>
             <li className="cursor-pointer">Team</li>
           </Link>
-          <Link to={"/about"}>
+          <Link onClick={() => SetNav(false)}  to={"/about"}>
             <li className="cursor-pointer">About Us</li>
           </Link>
 
-          <Link to={"/services"}>
+          <Link onClick={() => SetNav(false)}  to={"/services"}>
             <li className="cursor-pointer">Services</li>
           </Link>
 
-          <Link to={"/blogs"}>
+          <Link onClick={() => SetNav(false)}  to={"/blogs"}>
             <li className="cursor-pointer">Blogs</li>
           </Link>
 
-          <Link to={"/contact"}>
+          <Link onClick={() => SetNav(false)}  to={"/contact"}>
             <li className="cursor-pointer">Contact</li>
           </Link>
         </ul>
         <div className="">
-          <Link to={'https://waiminhein.vercel.app/'}> 
+          <Link   to={'https://waiminhein.vercel.app/'}> 
           
           <button className="px-2 py-1 border border-white rounded-sm">
             Login
@@ -59,30 +59,30 @@ const Navbar = () => {
         </div>
 
         <ul className=" flex  flex-col items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
-          <Link to={"/"}>
+          <Link onClick={() => SetNav(false)}  to={"/"}>
             <li className="cursor-pointer">Home</li>
           </Link>
-          <Link to={"/team"}>
+          <Link onClick={() => SetNav(false)}  to={"/team"}>
             <li className="cursor-pointer">Team</li>
           </Link>
-          <Link to={"/about"}>
+          <Link onClick={() => SetNav(false)}  to={"/about"}>
             <li className="cursor-pointer">About Us</li>
           </Link>
 
-          <Link to={"/services"}>
+          <Link onClick={() => SetNav(false)}  to={"/services"}>
             <li className="cursor-pointer">Services</li>
           </Link>
 
-          <Link to={"/blogs"}>
+          <Link onClick={() => SetNav(false)}  to={"/blogs"}>
             <li className="cursor-pointer">Blogs</li>
           </Link>
 
-          <Link to={"/contact"}>
+          <Link onClick={() => SetNav(false)}  to={"/contact"}>
             <li className="cursor-pointer">Contact</li>
           </Link>
         </ul>
         <div className="mx-auto">
-        <Link to={'https://waiminhein.vercel.app/'}> 
+        <Link  to={'https://waiminhein.vercel.app/'}> 
           
           <button className="px-2 py-1 border border-white rounded-sm">
             Login

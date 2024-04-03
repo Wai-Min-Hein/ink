@@ -3,14 +3,26 @@ import About from "./components/About";
 import Team from "./components/Team";
 import Whyus from "./components/Whyus";
 import { ContainerScroll } from "./components/ui/container-scroll-animation";
+import Loader from "./components/Loader";
+
 
 import bg from "/images/hero-image.png";
+import { useEffect, useState } from "react";
 
 const AboutUs = () => {
   const lg = useMediaQuery({ query: "(min-width: 1024px)" });
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
 
   return (
-    <main className="">
+    <>
+
+    {loader ? <Loader />: (
+      <main className="">
       
 
       <section
@@ -45,6 +57,10 @@ const AboutUs = () => {
         ): <About/>}
       <Team/>
     </main>
+    )}
+    
+
+    </>
   );
 };
 

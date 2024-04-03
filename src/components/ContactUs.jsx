@@ -23,16 +23,16 @@ const ContactUs = () => {
 
         <div className="flex items-start justify-between mt-8">
           <div className="basis-1/2">
-            <div className="flex items-start justify-start gap-2 basis-2/5 mb-6">
-              <LuPhoneCall size={52} />
+            <div className="flex  flex-col sm:flex-row items-center md:items-start text-center sm:text-start justify-start gap-2 basis-2/5 mb-6">
+              <LuPhoneCall className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl" />
               <div className="">
                 <h6 className="text-lg font-[500] tracking-wide">Phone</h6>
                 <p className="text-lg tracking-normal">09876543212</p>
               </div>
             </div>
 
-            <div className="flex items-start justify-start gap-2">
-              <GrMapLocation size={52} />
+            <div className="flex  flex-col sm:flex-row items-center md:items-start text-center sm:text-start justify-start gap-2">
+              <GrMapLocation className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl" />
               <div className="">
                 <h6 className="text-lg font-[500] tracking-wide">Address</h6>
                 <p className="text-lg tracking-normal">
@@ -43,8 +43,8 @@ const ContactUs = () => {
           </div>
 
           <div className="basis-1/2">
-            <div className="flex items-start justify-start gap-2 basis-2/5 mb-6">
-              <IoEarthOutline size={52} />
+            <div className="flex  flex-col sm:flex-row items-center md:items-start text-center sm:text-start justify-start gap-2 basis-2/5 mb-6">
+              <IoEarthOutline className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl" />
               <div className="">
                 <h6 className="text-lg font-[500] tracking-wide">Website</h6>
                 <p className="text-lg tracking-normal">
@@ -53,8 +53,8 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <div className="flex items-start justify-start gap-2">
-              <SlEnvolopeLetter size={52} />
+            <div className="flex  flex-col sm:flex-row items-center md:items-start text-center sm:text-start justify-start gap-2">
+              <SlEnvolopeLetter className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl" />
               <div className="">
                 <h6 className="text-lg font-[500] tracking-wide">Email</h6>
                 <p className="text-lg tracking-normal">info@gmail.com</p>

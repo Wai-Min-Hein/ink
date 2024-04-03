@@ -1,9 +1,18 @@
 import { useParams } from "react-router-dom";
 import bg from "/images/hero-image.png";
 import BlogComponent from "./BlogComponent";
+import { useEffect, useState } from "react";
+import Loader from "./Loader";
 
 
 const ArtistDetail = () => {
+
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
   const artists = [
     {
       id: 1,
@@ -166,7 +175,9 @@ const ArtistDetail = () => {
   }
 
   return (
-    <main className=" ">
+<>
+    {loader ? <Loader />:(
+      <main className=" ">
       <section
         style={{
           backgroundImage: `url(${bg})`,
@@ -214,6 +225,10 @@ const ArtistDetail = () => {
       <BlogComponent/>
       
     </main>
+    )}
+
+    
+    </>
   );
 };
 
