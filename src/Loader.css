@@ -1,28 +1,4 @@
-* {
-	border: 0;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0; }
-  
-  \:root {
-	--bg: #454954;
-	--fg: #e3e4e8;
-	--fg-t: rgba(227, 228, 232, 0.5);
-	--primary1: #255ff4;
-	--primary2: #5583f6;
-	--trans-dur: 0.3s;
-	font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320)); }
-  
-  body {
-	background-color: #454954;
-	background-image: linear-gradient(135deg, transparent, rgba(0, 0, 0, 0.2));
-	color: #e3e4e8;
-	font: 1em/1.5 "Varela Round", Helvetica, sans-serif;
-	height: 100vh;
-	min-height: 360px;
-	display: grid;
-	place-items: center;
-	transition: background-color 0.3s, color 0.3s; }
+
   
   .pl {
 	box-shadow: 2em 0 2em rgba(0, 0, 0, 0.2) inset, -2em 0 2em rgba(255, 255, 255, 0.1) inset;

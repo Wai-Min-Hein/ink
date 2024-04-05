@@ -60,15 +60,19 @@ h1 {
   font-size: 14px;
   letter-spacing: 1.6px;
   font-weight: 500;
-  background-color: none;
+  background-color: transparent;
   cursor: pointer;
   /* transition: border-color 0.25s; */
 }
 
 /* button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
+  outline: 4px auto -webkit-focus-ring-color; */
+/* } */
+
+button {
+  background-color: transparent !important;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
