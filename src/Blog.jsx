@@ -2,49 +2,21 @@ import { FaCalendarAlt } from "react-icons/fa";
 
 import bg from "/images/hero-image.png";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "./components/Loader";
 
-
-
-
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchFail, fetchStart, fetchSuccess } from "./FetchingSlice/FetchingSlice";
-
 const Blog = () => {
-
- 
-  const {loading} = useSelector(state => state.fetch)
-
-
-  const dispatch = useDispatch()
-
-  const fetchArtworks = async () => {
-    fetchStart()
-
-    try {
-    const res = await axios.get('https://fakestoreapi.com/products')
-    const data = res.data
-
-    data && dispatch(fetchSuccess())
-
-    console.log(data)
-
-      
-    } catch (error) {
-
-      dispatch(fetchFail())
-
-      console.log(error)
-      
-    }
-  }
+  const [fetchData, setFetchData] = useState([]);
 
   useEffect(() => {
-    fetchArtworks()
-  }, [])
+    const getData = async () => {
+      const data = await axios.get("https://fakestoreapi.com/products");
+      setFetchData(data.data);
+    };
 
+    getData();
+  }, []);
   const blogs = [
     {
       id: 1,
@@ -74,11 +46,17 @@ const Blog = () => {
 
   const nav = useNavigate();
 
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
   return (
 
     <>
 
-    {loading ? <Loader />:(
+    {loader ? <Loader />:(
        <main className="">
        <section
          style={{

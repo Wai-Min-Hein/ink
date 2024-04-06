@@ -7,19 +7,24 @@ import AppRoute from "./AppRoute.jsx";
 import { MantineProvider } from "@mantine/core";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-import { Provider } from 'react-redux'
-import { store } from "./store/store.js";
+
+import { persistor, store } from "./store/store.js";
+
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-    <MantineProvider>
-      <Router>
-        <Navbar />
-        <AppRoute />
-        <Footer />
-      </Router>
-    </MantineProvider>
-    </Provider>
+    <PersistGate persistor={persistor}>
+      <Provider store={store}>
+        <MantineProvider>
+          <Router>
+            <Navbar />
+            <AppRoute />
+            <Footer />
+          </Router>
+        </MantineProvider>
+      </Provider>
+    </PersistGate>
   </React.StrictMode>
 );

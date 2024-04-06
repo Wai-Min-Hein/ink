@@ -1,51 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Team from "./components/Team";
 import Whyus from "./components/Whyus";
 import bg from "/images/hero-image.png";
 import Loader from "./components/Loader";
 
-
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchFail, fetchStart, fetchSuccess } from "./FetchingSlice/FetchingSlice";
-import axios from "axios";
-
 const Artists = () => {
-  
-
-  
-  const {loading} = useSelector(state => state.fetch)
-
-
-  const dispatch = useDispatch()
-
-  const fetchArtworks = async () => {
-    fetchStart()
-
-    try {
-    const res = await axios.get('https://fakestoreapi.com/products')
-    const data = res.data
-
-    data && dispatch(fetchSuccess())
-
-    console.log(data)
-
-      
-    } catch (error) {
-
-      dispatch(fetchFail())
-
-      console.log(error)
-      
-    }
-  }
-
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
-    fetchArtworks()
-  }, [])
-
+    setTimeout(() => {
+      setLoader(false);
+    }, 1500);
+  }, []);
   return (
     <>
-      {loading ? <Loader />:(
+      {loader ? <Loader />:(
           <main className="">
           <section
             style={{

@@ -2,11 +2,16 @@ import { FaFacebook, FaInstagram, FaTelegram } from "react-icons/fa6";
 import { SiViber } from "react-icons/si";
 
 import logo from "/images/golden-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const {pathname} = useLocation()
+  
+  const noFooterPage = pathname.includes('/login') ||  pathname.includes('/admin')
+
+  
   return (
-    <footer className="mt-10 px-4 md:px-0 md:container md:mx-auto">
+    <footer className={`mt-10 px-4 md:px-0 md:container md:mx-auto ${noFooterPage? 'hidden': 'block'}`}>
       <div className="flex justify-center">
         <img src={logo} className="w-1/6 h-auto object-cover" alt="" />
       </div>

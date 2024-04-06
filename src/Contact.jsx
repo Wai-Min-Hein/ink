@@ -10,7 +10,7 @@ const Contact = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
-    }, 1000);
+    }, 1500);
   }, []);
   return (
 

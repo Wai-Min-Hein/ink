@@ -71,7 +71,7 @@ export const Card = ({ rotate, scale, children }) => {
       }}
       className=" border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
     >
-      <div className="  md:rounded-2xl md:p-4 ">
+      <div className="  bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
         {children}
       </div>
     </motion.div>

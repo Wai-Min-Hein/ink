@@ -1,20 +1,22 @@
+
+
 import { MdMenu, MdClose } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 // import logo from "/images/white-logo.png";
-import logo from "/images/golden-logo.png";
+import logo from "../public/images/golden-logo.png";
 import { useState } from "react";
 
-import { useLocation } from 'react-router-dom'
-const Navbar = () => {
 
+const Dashboard = () => {
   const [nav, SetNav] = useState(false)
 
-  const {pathname} = useLocation()
-  
-  const noNav = pathname.includes('/login') ||  pathname.includes('/admin')
   return (
-    <nav className={`flex items-center justify-between sm:container sm:mx-auto px-4 md:px-8 lg:px-0 py-2 relative ${noNav? 'hidden': 'block'}`}>
+    <main>
+
+
+
+<nav className="flex items-center justify-between sm:container sm:mx-auto px-4 md:px-8 lg:px-0 py-2 relative">
       <div className="flex items-center justify-start gap-3">
         <img src={logo} alt="" className="h-14  object-cover" />
         {/* <div className="">
@@ -24,33 +26,27 @@ const Navbar = () => {
 
       <div className="sm:flex items-center justify-between flex-1 hidden ">
         <ul className=" flex  items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
-          <Link onClick={() => SetNav(false)}  to={"/"}>
-            <li className="cursor-pointer">Home</li>
+          
+          <Link onClick={() => SetNav(false)}  to={"/admin/artists"}>
+            <li className="cursor-pointer">Artists</li>
           </Link>
-          <Link onClick={() => SetNav(false)}  to={"/team"}>
-            <li className="cursor-pointer">Team</li>
-          </Link>
-          <Link onClick={() => SetNav(false)}  to={"/about"}>
-            <li className="cursor-pointer">About Us</li>
-          </Link>
+          
 
-          <Link onClick={() => SetNav(false)}  to={"/services"}>
-            <li className="cursor-pointer">Services</li>
-          </Link>
+          
 
-          <Link onClick={() => SetNav(false)}  to={"/blogs"}>
+          <Link onClick={() => SetNav(false)}  to={"/admin/blogs"}>
             <li className="cursor-pointer">Blogs</li>
           </Link>
 
-          <Link onClick={() => SetNav(false)}  to={"/contact"}>
-            <li className="cursor-pointer">Contact</li>
+          <Link onClick={() => SetNav(false)}  to={"/admin/artworks"}>
+            <li className="cursor-pointer">Art works</li>
           </Link>
         </ul>
         <div className="">
           <Link   to={'http://localhost:5173/login'}> 
           
           <button className="px-2 py-1 border border-white rounded-sm">
-            Login
+            Logout
           </button>
           </Link>
         </div>
@@ -65,39 +61,42 @@ const Navbar = () => {
         </div>
 
         <ul className=" flex  flex-col items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
-          <Link onClick={() => SetNav(false)}  to={"/"}>
-            <li className="cursor-pointer">Home</li>
+        <Link onClick={() => SetNav(false)}  to={"/admin/artists"}>
+            <li className="cursor-pointer">Artists</li>
           </Link>
-          <Link onClick={() => SetNav(false)}  to={"/team"}>
-            <li className="cursor-pointer">Team</li>
-          </Link>
-          <Link onClick={() => SetNav(false)}  to={"/about"}>
-            <li className="cursor-pointer">About Us</li>
-          </Link>
+          
 
-          <Link onClick={() => SetNav(false)}  to={"/services"}>
-            <li className="cursor-pointer">Services</li>
-          </Link>
+          
 
-          <Link onClick={() => SetNav(false)}  to={"/blogs"}>
+          <Link onClick={() => SetNav(false)}  to={"/admin/blogs"}>
             <li className="cursor-pointer">Blogs</li>
           </Link>
 
-          <Link onClick={() => SetNav(false)}  to={"/contact"}>
-            <li className="cursor-pointer">Contact</li>
+          <Link onClick={() => SetNav(false)}  to={"/admin/artworks"}>
+            <li className="cursor-pointer">Art works</li>
           </Link>
         </ul>
         <div className="mx-auto">
         <Link  to={'http://localhost:5173/login'}> 
           
           <button className="px-2 py-1 border border-white rounded-sm">
-            Login
+            Logout
           </button>
           </Link>
         </div>
       </div>
     </nav>
-  );
-};
 
-export default Navbar;
+
+
+
+
+
+
+
+
+    </main>
+  )
+}
+
+export default Dashboard
