@@ -7,20 +7,48 @@ import Whyus from "./components/Whyus";
 import Team from "./components/Team";
 import { ContainerScroll } from "./components/ui/container-scroll-animation";
 import { useMediaQuery } from "react-responsive";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import Loader from "./components/Loader";
+import axios from "axios";
+import { fetchFail, fetchStart, fetchSuccess } from "./FetchingSlice/FetchingSlice";
 
 const App = () => {
   const lg = useMediaQuery({ query: "(min-width: 1024px)" });
-  const [loader, setLoader] = useState(true);
+  
+
+  const {loading} = useSelector(state => state.fetch)
+
+
+  const dispatch = useDispatch()
+
+  const fetchArtworks = async () => {
+    fetchStart()
+
+    try {
+    const res = await axios.get('https://fakestoreapi.com/products')
+    const data = res.data
+
+    data && dispatch(fetchSuccess())
+
+    console.log(data)
+
+      
+    } catch (error) {
+
+      dispatch(fetchFail())
+
+      console.log(error)
+      
+    }
+  }
+
   useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1500);
-  }, []);
+    fetchArtworks()
+  }, [])
   return (
     <>
-      {loader ? <Loader />: (
+      {loading ? <Loader />: (
         <main className="relative z-20">
         <Hero />
 

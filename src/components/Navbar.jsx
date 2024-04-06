@@ -41,7 +41,7 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="">
-          <Link   to={'https://waiminhein.vercel.app/'}> 
+          <Link   to={'http://inktattoo.infinityfreeapp.com/public'}> 
           
           <button className="px-2 py-1 border border-white rounded-sm">
             Login
@@ -82,7 +82,7 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="mx-auto">
-        <Link  to={'https://waiminhein.vercel.app/'}> 
+        <Link  to={'http://inktattoo.infinityfreeapp.com/public'}> 
           
           <button className="px-2 py-1 border border-white rounded-sm">
             Login

@@ -7,9 +7,12 @@ import AppRoute from "./AppRoute.jsx";
 import { MantineProvider } from "@mantine/core";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import { Provider } from 'react-redux'
+import { store } from "./store/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Provider store={store}>
     <MantineProvider>
       <Router>
         <Navbar />
@@ -17,5 +20,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Footer />
       </Router>
     </MantineProvider>
+    </Provider>
   </React.StrictMode>
 );
