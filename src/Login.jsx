@@ -50,6 +50,8 @@ const Login = () => {
 
       const data = res?.data;
 
+      console.log(data)
+
       if (data) {
         dispatch(signInSuccess(data));
         nav('/admin/dashboard')

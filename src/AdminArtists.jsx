@@ -1,98 +1,251 @@
-
-
-
-
 import { MdMenu, MdClose } from "react-icons/md";
+
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 // import logo from "/images/white-logo.png";
 import logo from "../public/images/golden-logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { TextInput, Button, Group, Box, Table } from "@mantine/core";
+import { useForm } from "@mantine/form";
+import Loader from "./components/Loader";
 
 const AdminArtists = () => {
-  const [nav, SetNav] = useState(false)
+  const [artists, setArtists] = useState([]);
+
+  const [nav, SetNav] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    position:'',
+    img:'',
+    fb:'',
+    viber:'',
+    phone:''
+  });
+console.log(formData)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  const handleEdit = (id) => {
+    const currentArtist = artists.filter((artist) => artist._id == id)[0];
+
+    setFormData({...currentArtist});
+  };
+
+  const handleDelete = (id) => {
+    console.log(id);
+  };
+
+  const rows = artists.map((element) => (
+    <Table.Tr key={element._id}>
+      <Table.Td>{element.name}</Table.Td>
+      <Table.Td>{element.position}</Table.Td>
+      <Table.Td>{element.img}</Table.Td>
+      <Table.Td>{element.fb}</Table.Td>
+      <Table.Td>{element.viber}</Table.Td>
+      <Table.Td>{element.phone}</Table.Td>
+      <Table.Td>
+        <div className="flex gap-2">
+          <Button onClick={() => handleEdit(element._id)}>Edit</Button>
+          <Button
+            onClick={() => handleDelete(element._id)}
+            className="!bg-red-500"
+          >
+            Delete
+          </Button>
+        </div>
+      </Table.Td>
+    </Table.Tr>
+  ));
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get(
+        "https://render-2pmo.onrender.com/api/artist"
+      );
+      setArtists(res.data.data);
+    };
+
+    getData();
+  }, []);
 
   return (
-    <main>
+    <>
+      {!artists ? (
+        <Loader />
+      ) : (
+        <main>
+          <nav className="flex items-center justify-between sm:container sm:mx-auto px-4 md:px-8 lg:px-0 py-2 relative">
+            <div className="flex items-center justify-start gap-3">
+              <Link to={"/"}>
+                <img src={logo} alt="" className="h-14  object-cover" />
+              </Link>
+              {/* <div className="">
+     <h6>Ink Tattoo Stuido</h6>
+   </div> */}
+            </div>
 
-<nav className="flex items-center justify-between sm:container sm:mx-auto px-4 md:px-8 lg:px-0 py-2 relative">
-      <div className="flex items-center justify-start gap-3">
-      <Link to={'/'}>
+            <div className="sm:flex items-center justify-between flex-1 hidden ">
+              <ul className=" flex  items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
+                <Link onClick={() => SetNav(false)} to={"/admin/artists"}>
+                  <li className="cursor-pointer">Artists</li>
+                </Link>
 
-<img src={logo} alt="" className="h-14  object-cover" />
-</Link>
-        {/* <div className="">
-          <h6>Ink Tattoo Stuido</h6>
-        </div> */}
-      </div>
+                <Link onClick={() => SetNav(false)} to={"/admin/blogs"}>
+                  <li className="cursor-pointer">Blogs</li>
+                </Link>
 
-      <div className="sm:flex items-center justify-between flex-1 hidden ">
-        <ul className=" flex  items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
-          
-          <Link onClick={() => SetNav(false)}  to={"/admin/artists"}>
-            <li className="cursor-pointer">Artists</li>
-          </Link>
-          
+                <Link onClick={() => SetNav(false)} to={"/admin/artworks"}>
+                  <li className="cursor-pointer">Art works</li>
+                </Link>
+              </ul>
+              <div className="">
+                <Link to={""}>
+                  <button className="px-2 py-1 border border-white rounded-sm">
+                    Log out
+                  </button>
+                </Link>
+              </div>
+            </div>
+            <div className="block sm:hidden cursor-pointer">
+              <MdMenu onClick={() => SetNav(true)} size={24} />
+            </div>
 
-          
+            <div
+              className={` sm:hidden  flex-col gap-y-6 justify-center flex-1 absolute top-0 right-0 overflow-auto z-50 bg-black w-full  py-8 ${
+                nav ? "flex" : "hidden"
+              }`}
+            >
+              <div className="text-right ml-auto pr-12">
+                <MdClose
+                  onClick={() => SetNav(false)}
+                  size={24}
+                  className="cursor-pointer"
+                />
+              </div>
 
-          <Link onClick={() => SetNav(false)}  to={"/admin/blogs"}>
-            <li className="cursor-pointer">Blogs</li>
-          </Link>
+              <ul className=" flex  flex-col items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
+                <Link onClick={() => SetNav(false)} to={"/admin/artists"}>
+                  <li className="cursor-pointer">Artists</li>
+                </Link>
 
-          <Link onClick={() => SetNav(false)}  to={"/admin/artworks"}>
-            <li className="cursor-pointer">Art works</li>
-          </Link>
-        </ul>
-        <div className="">
-          <Link   to={''}> 
-          
-          <button className="px-2 py-1 border border-white rounded-sm">
-            Log out
-          </button>
-          </Link>
-        </div>
-      </div>
-      <div className="block sm:hidden cursor-pointer">
-        <MdMenu onClick={() => SetNav(true)} size={24} />
-      </div>
+                <Link onClick={() => SetNav(false)} to={"/admin/blogs"}>
+                  <li className="cursor-pointer">Blogs</li>
+                </Link>
 
-      <div className={` sm:hidden  flex-col gap-y-6 justify-center flex-1 absolute top-0 right-0 overflow-auto z-50 bg-black w-full  py-8 ${nav? 'flex': 'hidden'}`}>
-        <div className="text-right ml-auto pr-12">
-          <MdClose onClick={() => SetNav(false)} size={24} className="cursor-pointer" />
-        </div>
+                <Link onClick={() => SetNav(false)} to={"/admin/artworks"}>
+                  <li className="cursor-pointer">Art works</li>
+                </Link>
+              </ul>
+              <div className="mx-auto">
+                <Link to={""}>
+                  <button className="px-2 py-1 border border-white rounded-sm">
+                    Log out
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </nav>
 
-        <ul className=" flex  flex-col items-center justify-center gap-6 lg:gap-12 flex-1 mx-auto text-[1.2] font-semibold leading-3 tracking-wider">
-        <Link onClick={() => SetNav(false)}  to={"/admin/artists"}>
-            <li className="cursor-pointer">Artists</li>
-          </Link>
-          
+          <div className="">
+            <h1 className="text-center">Add New Artist</h1>
 
-          
+            <Box maw={340} mx="auto">
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <TextInput
+                  withAsterisk
+                  label="Name"
+                  required
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  //  {...form.getInputProps("name")}
+                />
 
-          <Link onClick={() => SetNav(false)}  to={"/admin/blogs"}>
-            <li className="cursor-pointer">Blogs</li>
-          </Link>
+                <TextInput
+                  withAsterisk
+                  label="Position"
+                  required
+                  placeholder="Position"
+                  value={formData.position}
+                  onChange={(e) =>
+                    setFormData({ ...formData, position: e.target.value })
+                  }
+                />
 
-          <Link onClick={() => SetNav(false)}  to={"/admin/artworks"}>
-            <li className="cursor-pointer">Art works</li>
-          </Link>
-        </ul>
-        <div className="mx-auto">
-        <Link  to={''}> 
-          
-          <button className="px-2 py-1 border border-white rounded-sm">
-            Log out
-          </button>
-          </Link>
-        </div>
-      </div>
-    </nav>
+                <TextInput
+                  withAsterisk
+                  label="Image"
+                  required
+                  placeholder="Artist's Image Link"
+                  value={formData.img}
+                  onChange={(e) =>
+                    setFormData({ ...formData, img: e.target.value })
+                  }
+                />
+                <TextInput
+                  withAsterisk
+                  label="Facebook"
+                  placeholder="Artist's Facebook Link"
+                  value={formData.fb}
+                  onChange={(e) =>
+                    setFormData({ ...formData, fb: e.target.value })
+                  }
+                />
 
+                <TextInput
+                  withAsterisk
+                  label="Viber"
+                  placeholder="Artist's Viber Number"
+                  value={formData.vb}
+                  onChange={(e) =>
+                    setFormData({ ...formData, vb: e.target.value })
+                  }
+                />
 
-    </main>
-  )
-}
+                <TextInput
+                  withAsterisk
+                  label="Phone"
+                  placeholder="Artist's Phone Number"
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                />
 
-export default AdminArtists
+                <Group justify="flex-end" mt="md">
+                  <Button type="submit">Submit</Button>
+                </Group>
+              </form>
+            </Box>
+          </div>
+
+          <Table.ScrollContainer minWidth={500}>
+            <Table>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Artist`s name</Table.Th>
+                  <Table.Th>Artist`s position</Table.Th>
+                  <Table.Th>Artist`s image</Table.Th>
+                  <Table.Th>Artist`s facebook Link</Table.Th>
+                  <Table.Th>Artist`s viber number</Table.Th>
+                  <Table.Th>Artist`s phone number</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>{rows}</Table.Tbody>
+            </Table>
+          </Table.ScrollContainer>
+        </main>
+      )}
+    </>
+  );
+};
+
+export default AdminArtists;
