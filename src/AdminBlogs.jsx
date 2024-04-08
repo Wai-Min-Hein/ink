@@ -2,6 +2,13 @@ import { MdMenu, MdClose } from "react-icons/md";
 
 import axios from "axios";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  dataFetchFailure,
+  dataFetchStart,
+  dataFetchSuccess,
+} from "./userSlice/dataFetchSlice";
+
 import { Link } from "react-router-dom";
 // import logo from "/images/white-logo.png";
 import logo from "../public/images/golden-logo.png";
@@ -13,38 +20,141 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 const AdminBlogs = () => {
+  const { loading } = useSelector((state) => state.dataFetch);
+
+  const dispatch = useDispatch();
   const [nav, SetNav] = useState(false);
   const [paraData, setParaData] = useState("");
 
   const [formData, setFormData] = useState({
     img: "",
-      title: "",
-      para: "",
+    title: "",
   });
+  const handleSubmit = async (e) => {
+    dispatch(dataFetchStart());
+
+    e.preventDefault();
+    const id = formData?._id;
+    if (id) {
+      try {
+        const res = await axios.put("https://render-2pmo.onrender.com/api/blog", {
+          ...formData,
+          para: paraData,
+        });
+        dispatch(dataFetchSuccess());
+        setFormData({
+          img: "",
+          title: "",
+        });
+        setParaData("")
+
+      } catch (error) {
+        console.log("Cannot create new blog");
+        dispatch(dataFetchStart(error.message));
+      }
+    } 
+    
+
+    else {
+
+      try {
+        const res = await axios.post(
+          "https://render-2pmo.onrender.com/api/blog",
+          {
+            ...formData,
+            para: paraData,
+          }
+        );
+        dispatch(dataFetchSuccess());
+        setFormData({
+          img: "",
+          title: "",
+        });
+        setParaData("")
+      } catch (error) {
+        console.log("Cannot create new blog");
+        dispatch(dataFetchStart(error.message));
+      }
+    }
+  };
+
+  const [blogs, setBlogs] = useState([]);
+
+  const handleEdit = (id) => {
+    const currentArtist = blogs.filter((blog) => blog._id == id)[0];
+
   
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log({...formData, para: paraData})
-  }
 
-  const [artists, setArtists] = useState([]);
+    setFormData({ ...currentArtist });
 
-  const rows = artists.map((element) => (
+    setParaData(currentArtist.para)
+  };
+
+  const handleDelete = async (id) => {
+    dispatch(dataFetchStart());
+
+    try {
+      const res = await axios.post("https://render-2pmo.onrender.com/api/blog/delete", {
+        id,
+      });
+
+      console.log(id);
+
+      dispatch(dataFetchSuccess());
+    } catch (error) {
+      dispatch(dataFetchFailure("Cannot delete data"));
+      console.log("object");
+    }
+  };
+
+  const rows = blogs.map((element) => (
     <Table.Tr key={element._id}>
-      <Table.Td>{element.img}</Table.Td>
       <Table.Td>{element.title}</Table.Td>
-      <Table.Td>{element.para}</Table.Td>
+      <Table.Td>{element.img}</Table.Td>
+      <Table.Td>{
+       <div className="" dangerouslySetInnerHTML={{__html: element.para.slice(0,50)}}>
+                
+       </div>
+        }</Table.Td>
+      <Table.Td>
+        <div className="flex gap-2">
+          <Button onClick={() => handleEdit(element._id)}>Edit</Button>
+          <Button
+            onClick={() => handleDelete(element._id)}
+            className="!bg-red-500"
+          >
+            Delete
+          </Button>
+        </div>
+      </Table.Td>
     </Table.Tr>
   ));
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await axios.get("https://render-2pmo.onrender.com/api/blogs");
-  //     setArtists(res.data.data);
-  //   };
+  useEffect(() => {
+    try {
+      const getData = async () => {
+        const res = await axios.get("https://render-2pmo.onrender.com/api/blog");
 
-  //   getData();
-  // }, []);
+        setBlogs(res.data.data);
+      };
+      getData();
+    } catch (error) {
+      dispatch(dataFetchFailure("Cannot get datas"));
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      const getData = async () => {
+        const res = await axios.get("https://render-2pmo.onrender.com/api/blog");
+
+        setBlogs(res.data.data);
+      };
+      getData();
+    } catch (error) {
+      console.log("Cannot get data");
+    }
+  }, [loading]);
 
   return (
     <main>
@@ -64,12 +174,14 @@ const AdminBlogs = () => {
               <li className="cursor-pointer">Artists</li>
             </Link>
 
-            <Link onClick={() => SetNav(false)} to={"/admin/blogs"}>
-              <li className="cursor-pointer">Blogs</li>
-            </Link>
+            
 
             <Link onClick={() => SetNav(false)} to={"/admin/artworks"}>
               <li className="cursor-pointer">Art works</li>
+            </Link>
+
+            <Link onClick={() => SetNav(false)} to={"/admin/blogs"}>
+              <li className="cursor-pointer">Blogs</li>
             </Link>
           </ul>
           <div className="">
@@ -123,33 +235,33 @@ const AdminBlogs = () => {
       <div className="">
         <h1 className="text-center">Add New Blog</h1>
 
-        <Box maw={440} mx="auto">
-          <form
-          onSubmit={(e) => handleSubmit(e)}
-            
-
-          >
+        <Box maw={540} mx="auto">
+          <form onSubmit={(e) => handleSubmit(e)}>
             <TextInput
               withAsterisk
               label="Image"
               required
               placeholder="Artist's Image Link"
               // {...form.getInputProps("img")}
-              onChange={(e) => setFormData({...formData, img: e.target.value})}
-
+              value={formData.img}
+              onChange={(e) =>
+                setFormData({ ...formData, img: e.target.value })
+              }
             />
             <TextInput
               withAsterisk
               label="Title"
               placeholder="Blog Title"
               // {...form.getInputProps("title")}
-              onChange={(e) => setFormData({...formData, title: e.target.value})}
-
+              value={formData.title}
+              onChange={(e) =>
+                setFormData({ ...formData, title: e.target.value })
+              }
             />
 
             <ReactQuill
               theme="snow"
-              className="h-[10rem] block mt-8 my-16"
+              className="h-[15rem] block mt-8 my-16"
               value={paraData}
               onChange={setParaData}
             />

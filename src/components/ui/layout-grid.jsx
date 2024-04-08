@@ -20,7 +20,7 @@ export const LayoutGrid = ({ cards }) => {
     <div className="w-full h-full  grid grid-cols-1    gap-4   !bg-[#0d0d0d] !text-[#d2d2d2]">
       {cards.map((card, i) => (
         <div key={i} 
-        className={card.id % 2 === 0 ? 'row-span-2' : ''}
+        className={card._id % 2 === 0 ? 'row-span-2' : ''}
         
         // className={cn(card.className, )}
         
@@ -30,15 +30,15 @@ export const LayoutGrid = ({ cards }) => {
             className={cn(
               card.className,
               "relative overflow-hidden",
-              selected?.id === card.id
+              selected?._id === card._id
                 ? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col"
-                : lastSelected?.id === card.id
+                : lastSelected?._id === card._id
                 ? "z-40 bg-white rounded-xl h-full w-full"
                 : "bg-white rounded-xl h-full w-full"
             )}
             layout
           >
-            {selected?.id === card.id && <SelectedCard selected={selected} />}
+            {selected?._id === card._id && <SelectedCard selected={selected} />}
             <BlurImage card={card}  />
           </motion.div>
         </div>
@@ -47,9 +47,9 @@ export const LayoutGrid = ({ cards }) => {
         onClick={handleOutsideClick}
         className={cn(
           "absolute h-full w-full left-0 top-0 bg-black opacity-0 z-10",
-          selected?.id ? "pointer-events-auto" : "pointer-events-none"
+          selected?._id ? "pointer-events-auto" : "pointer-events-none"
         )}
-        animate={{ opacity: selected?.id ? 0.3 : 0 }}
+        animate={{ opacity: selected?._id ? 0.3 : 0 }}
       />
     </div>
   );
@@ -108,7 +108,7 @@ const SelectedCard = ({ selected }) => {
         }}
         className="relative px-8 pb-4 z-[70]"
       >
-        {selected?.id}
+        {selected?.artist}
       </motion.div>
     </div>
   );

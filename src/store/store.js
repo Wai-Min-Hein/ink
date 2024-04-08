@@ -7,10 +7,12 @@ import {
 } from 'redux-persist'
 
 import storage from 'redux-persist/lib/storage'
+import dataFetchReducer from '../userSlice/dataFetchSlice'
 
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  dataFetch: dataFetchReducer
 })
 
 const persistConfig = {

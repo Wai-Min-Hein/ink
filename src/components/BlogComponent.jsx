@@ -1,39 +1,53 @@
 import { motion } from "framer-motion";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Loader from "./Loader";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  dataFetchFailure,
+  dataFetchStart,
+  dataFetchSuccess,
+} from "../userSlice/dataFetchSlice";
+
 
 const BlogComponent = () => {
   const nav = useNavigate();
 
-  const blogs = [
-    {
-      id: 1,
-      img: "https://i.pinimg.com/236x/21/35/25/21352534f6b565147691a6570dce33d3.jpg",
-      title: "THE MOST EXCLUSIVE TATTOO IN THE WORLD",
-      para: "My Bonnie lies over the ocean. My Bonnie lies over the sea. My Bonnie lies over the ocean. Oh, bring back my Bonnie to me",
-    },
-    {
-      id: 2,
-      img: "https://i.pinimg.com/236x/21/35/25/21352534f6b565147691a6570dce33d3.jpg",
-      title: "THE MOST EXCLUSIVE TATTOO IN THE WORLD",
-      para: "My Bonnie lies over the ocean. My Bonnie lies over the sea. My Bonnie lies over the ocean. Oh, bring back my Bonnie to me",
-    },
-    {
-      id: 3,
-      img: "https://i.pinimg.com/236x/21/35/25/21352534f6b565147691a6570dce33d3.jpg",
-      title: "THE MOST EXCLUSIVE TATTOO IN THE WORLD",
-      para: "My Bonnie lies over the ocean. My Bonnie lies over the sea. My Bonnie lies over the ocean. Oh, bring back my Bonnie to me",
-    },
-    {
-      id: 4,
-      img: "https://i.pinimg.com/236x/21/35/25/21352534f6b565147691a6570dce33d3.jpg",
-      title: "THE MOST EXCLUSIVE TATTOO IN THE WORLD",
-      para: "My Bonnie lies over the ocean. My Bonnie lies over the sea. My Bonnie lies over the ocean. Oh, bring back my Bonnie to me",
-    },
-  ];
+  const { loading } = useSelector((state) => state.dataFetch);
+
+  const dispatch = useDispatch();
+
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    dispatch(dataFetchStart());
+
+    try {
+      const getData = async () => {
+        const data = await axios.get(
+          "https://render-2pmo.onrender.com/api/blog"
+        );
+        setBlogs(data.data.data);
+      };
+      dispatch(dataFetchSuccess());
+
+      getData();
+    } catch (error) {
+      dispatch(dataFetchFailure("Cannot get data"));
+    }
+  }, []);
+
+  
 
   const selectedBlogs = blogs.slice(0, 2);
   return (
+    <>
+    {loading ? (
+      <Loader />
+    ) : (
     <section className="flex flex-col lg:flex-row items-start justify-between md:container md:mx-auto px-4 md:px-0 mt-32 gap-4">
       <motion.div 
        initial={{ y: "100%", opacity: 0 }}
@@ -66,7 +80,7 @@ const BlogComponent = () => {
        transition={{ duration: 2 }}
        className="photo flex-1 flex items-center justify-between flex-wrap gap-y-6">
         {selectedBlogs.map((blog) => (
-          <div className="basis-full mx-auto ssm:mx-0 ssm:basis-[49%]" key={blog.id}>
+          <div className="basis-full mx-auto ssm:mx-0 ssm:basis-[49%]" key={blog._id}>
             <div className="">
               <img
                 src={blog.img}
@@ -82,14 +96,14 @@ const BlogComponent = () => {
               <FaCalendarAlt />
               <p className="tracking-wide">September 12, 2022</p>
             </div>
-            <p className="text-lg font-normal tracking-wide leading-tight md:px-4 py-4">
-              {blog.para}
-            </p>
+            <div className="" dangerouslySetInnerHTML={{__html: blog.para.slice(0,30)}}>
+                
+                </div>
 
             <div className="px-4">
               <button
                 className="px-4 border border-white rounded-sm py-2"
-                onClick={() => nav(`/blogs/${blog.id}`)}
+                onClick={() => nav(`/blogs/${blog._id}`)}
               >
                 Read More
               </button>
@@ -98,6 +112,8 @@ const BlogComponent = () => {
         ))}
       </motion.div>
     </section>
+    )}
+    </>
   );
 };
 

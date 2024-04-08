@@ -8,37 +8,110 @@ import logo from "../public/images/golden-logo.png";
 import { useEffect, useState } from "react";
 
 import { TextInput, Button, Group, Box, Table } from "@mantine/core";
-import { useForm } from "@mantine/form";
 import Loader from "./components/Loader";
 
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  dataFetchFailure,
+  dataFetchStart,
+  dataFetchSuccess,
+} from "./userSlice/dataFetchSlice";
+
 const AdminArtists = () => {
+  const { loading } = useSelector((state) => state.dataFetch);
+
+  const dispatch = useDispatch();
+
   const [artists, setArtists] = useState([]);
 
   const [nav, SetNav] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: '',
-    position:'',
-    img:'',
-    fb:'',
-    viber:'',
-    phone:''
+    name: "",
+    position: "",
+    img: "",
+    fb: "",
+    viber: "",
+    phone: "",
   });
-console.log(formData)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    dispatch(dataFetchStart());
+
     e.preventDefault();
-    console.log(formData);
+    const id = formData?._id
+    if(id) {
+      try {
+        const res = await axios.put(
+          "http://localhost:7000/api/artist",
+          formData
+        );
+        dispatch(dataFetchSuccess());
+        setFormData({
+          name: "",
+          position: "",
+          img: "",
+          fb: "",
+          viber: "",
+          phone: "",
+        });
+      } catch (error) {
+        console.log("Cannot create new artists");
+        dispatch(dataFetchStart(error.message));
+      }
+    }
+    else{
+      try {
+        const res = await axios.post(
+          "https://render-2pmo.onrender.com/api/artist",
+          formData
+        );
+        dispatch(dataFetchSuccess());
+        setFormData({
+          name: "",
+          position: "",
+          img: "",
+          fb: "",
+          viber: "",
+          phone: "",
+        });
+      } catch (error) {
+        console.log("Cannot create new artists");
+        dispatch(dataFetchStart(error.message));
+      }
+    }
+
+
+    
   };
 
   const handleEdit = (id) => {
     const currentArtist = artists.filter((artist) => artist._id == id)[0];
 
-    setFormData({...currentArtist});
+    setFormData({ ...currentArtist });
+
+    
   };
 
-  const handleDelete = (id) => {
-    console.log(id);
+  const handleDelete =async (id) => {
+
+    dispatch(dataFetchStart());
+
+    try {
+      const res = await axios.post(
+        "http://localhost:7000/api/artist/delete",
+        {id}
+      );
+      
+      dispatch(dataFetchSuccess());
+
+      
+    } catch (error) {
+      dispatch(dataFetchFailure('Cannot delete data'));
+      console.log('object');
+
+    }
   };
 
   const rows = artists.map((element) => (
@@ -65,18 +138,40 @@ console.log(formData)
 
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get(
-        "https://render-2pmo.onrender.com/api/artist"
-      );
-      setArtists(res.data.data);
+      dispatch(dataFetchStart());
+
+      try {
+        const res = await axios.get(
+          "https://render-2pmo.onrender.com/api/artist"
+        );
+        dispatch(dataFetchSuccess());
+        setArtists(res.data.data);
+      } catch (error) {
+        dispatch(dataFetchFailure('Cannot get data'));
+      }
     };
 
     getData();
   }, []);
 
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get(
+          "https://render-2pmo.onrender.com/api/artist"
+        );
+        setArtists(res.data.data);
+      } catch (error) {
+        console.log("Cannot create new");
+      }
+    };
+
+    getData();
+  }, [loading]);
+
   return (
     <>
-      {!artists ? (
+      {loading ? (
         <Loader />
       ) : (
         <main>
@@ -96,12 +191,14 @@ console.log(formData)
                   <li className="cursor-pointer">Artists</li>
                 </Link>
 
-                <Link onClick={() => SetNav(false)} to={"/admin/blogs"}>
-                  <li className="cursor-pointer">Blogs</li>
-                </Link>
+                
 
                 <Link onClick={() => SetNav(false)} to={"/admin/artworks"}>
                   <li className="cursor-pointer">Art works</li>
+                </Link>
+
+                <Link onClick={() => SetNav(false)} to={"/admin/blogs"}>
+                  <li className="cursor-pointer">Blogs</li>
                 </Link>
               </ul>
               <div className="">
