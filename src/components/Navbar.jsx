@@ -47,7 +47,7 @@ const Navbar = () => {
           </Link>
         </ul>
         <div className="">
-          <Link   to={'http://localhost:5173/login'}> 
+          <Link   to={'/login'}> 
           
           <button className="px-2 py-1 border border-white rounded-sm">
             Login
