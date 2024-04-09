@@ -42,7 +42,7 @@ const BlogDetails = () => {
         <Loader />
       ) : (
         <section className="">
-          <div className=" container mx-auto w-full md:w-3/4">
+          <div className=" container mx-auto w-full md:w-3/4  px-4 sm:px-8 md:px-48">
             <h1 className="my-4 leading-[1.2] tracking-wider text-[2.75rem] font-[500]">
               {blog.title}
             </h1>
@@ -50,12 +50,12 @@ const BlogDetails = () => {
             <img
               src={blog.img}
               alt=""
-              className="w-full md:w-3/5 object-cover rounded-md mt-8"
+              className="h-auto object-contain rounded-md mt-8"
             />
 
             
 
-            <div className="" dangerouslySetInnerHTML={{__html: blog.para}}>
+            <div className="blog-context" dangerouslySetInnerHTML={{__html: blog.para}}>
                 
                 </div>
           </div>

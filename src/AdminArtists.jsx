@@ -16,7 +16,7 @@ import {
   dataFetchStart,
   dataFetchSuccess,
 } from "./userSlice/dataFetchSlice";
-import { logOut } from "./userSlice/userSlice";
+import {  logOutFailure, logOutStart, logOutSuccess } from "./userSlice/userSlice";
 
 const AdminArtists = () => {
   const { loading } = useSelector((state) => state.dataFetch);
@@ -24,14 +24,19 @@ const AdminArtists = () => {
 
   const dispatch = useDispatch();
 
-  const handleLogout= () => {
+  const handleLogout=async () => {
+    dispatch(logOutStart())
     try {
 
-      console.log('logout success')
-      dispatch(logOut())
+      const res = await axios.post('https://render-2pmo.onrender.com/api/auth/logout')
+
+      if(res.data) dispatch(logOutSuccess())
+
       
     } catch (error) {
-      console.log('Error')
+      console.log(error)
+      dispatch(logOutFailure(error.message))
+
       
     }
   }

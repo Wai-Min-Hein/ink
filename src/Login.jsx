@@ -66,6 +66,8 @@ const Login = () => {
 
   return (
     <div className="grid place-items-center">
+
+      <h1 className="mt-20">Login</h1>
       <form
         className="w-[20rem]"
         onSubmit={form.onSubmit((values) => onSubmit(event, values))}

@@ -95,3 +95,25 @@ button:focus-visible {
 .mantine-Modal-content{
   background-color: transparent;
 }
+
+
+.blog-context p{
+  padding-top: 5px;
+  font-family: "Alegreya", "serif";
+  font-size: 1.2rem;
+
+
+}
+
+
+.blog-context h1,.blog-context h2,.blog-context h3,.blog-context h4,.blog-context h5,.blog-context h6{
+  padding: 8px 0;
+  font-family: "Alegreya", "serif";
+  font-size: 1.9rem;
+  font-weight: bold;
+
+
+}
+.blog-context a {
+  color: red;
+}

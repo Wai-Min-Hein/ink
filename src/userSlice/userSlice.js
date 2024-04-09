@@ -23,13 +23,24 @@ export const userSlice = createSlice({
       state.loading = false;
       state.errorMessage = action.payload;
     },
-    logOut: (state) => {
+
+    logOutStart: (state) => {
+      state.loading = true;
+      state.errorMessage = null;
+    },
+    logOutSuccess: (state) => {
       state.currentUser = null;
+      state.loading = false;
+      state.errorMessage = null;
+    },
+    logOutFailure: (state, action) => {
+      state.loading = false;
+      state.errorMessage = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { signInStart, signInSuccess, signInFailure,logOut } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure, logOutStart, logOutSuccess, logOutFailure } = userSlice.actions;
 
 export default userSlice.reducer;

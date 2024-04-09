@@ -18,7 +18,7 @@ import { TextInput, Button, Group, Box, Table } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { logOut } from "./userSlice/userSlice";
+import { logOutFailure, logOutStart, logOutSuccess } from "./userSlice/userSlice";
 
 const AdminBlogs = () => {
   const { loading } = useSelector((state) => state.dataFetch);
@@ -108,14 +108,19 @@ const AdminBlogs = () => {
     }
   };
 
-  const handleLogout= () => {
+  const handleLogout=async () => {
+    dispatch(logOutStart())
     try {
 
-      console.log('logout success')
-      dispatch(logOut())
+      const res = await axios.post('https://render-2pmo.onrender.com/api/auth/logout')
+
+      if(res.data) dispatch(logOutSuccess())
+
       
     } catch (error) {
-      console.log('Error')
+      console.log(error)
+      dispatch(logOutFailure(error.message))
+
       
     }
   }
@@ -136,7 +141,7 @@ const AdminBlogs = () => {
        </div>
         }</Table.Td>
       <Table.Td>
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-end">
           <Button onClick={() => handleEdit(element._id)}>Edit</Button>
           <Button
             onClick={() => handleDelete(element._id)}
