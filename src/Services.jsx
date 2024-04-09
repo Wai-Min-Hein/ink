@@ -9,7 +9,7 @@ const Services = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
-    }, 1500);
+    }, 700);
   }, []);
   return (
     <>

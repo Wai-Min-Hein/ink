@@ -14,12 +14,18 @@ const Artwork = () => {
   const [opened, { open, close }] = useDisclosure(false);
 
   useEffect(() => {
+    try {
+      
+    
     const getData = async () => {
       const data = await axios.get("https://render-2pmo.onrender.com/api/artworks");
       setFetchData(data.data);
     };
 
     getData();
+  } catch (error) {
+    console.log(error)
+  }
   }, []);
 
   const artWorks = [

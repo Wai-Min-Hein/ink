@@ -9,20 +9,50 @@ import { ContainerScroll } from "./components/ui/container-scroll-animation";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 import Loader from "./components/Loader";
+import axios from "axios";
+
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  dataFetchFailure,
+  dataFetchStart,
+  dataFetchSuccess,
+} from "./userSlice/dataFetchSlice";
 
 const App = () => {
   const lg = useMediaQuery({ query: "(min-width: 1024px)" });
-  const [loader, setLoader] = useState(true);
+
+  const [artists, setArtists] = useState([]);
+
+
+  const { loading } = useSelector((state) => state.dataFetch);
+
+  const dispatch = useDispatch();
+ 
   useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1500);
+    const getData = async () => {
+      dispatch(dataFetchStart());
+
+      try {
+        const res = await axios.get(
+          "https://render-2pmo.onrender.com/api/blog"
+        );
+        dispatch(dataFetchSuccess());
+        setArtists(res.data.data);
+      } catch (error) {
+        dispatch(dataFetchFailure("Cannot get data"));
+      }
+    };
+
+    getData();
   }, []);
+
+  
 
 
   return (
     <>
-      {loader ? <Loader />: (
+      {loading ? <Loader />: (
         <main className="relative z-20">
         <Hero />
 

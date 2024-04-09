@@ -18,6 +18,7 @@ import { TextInput, Button, Group, Box, Table } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { logOut } from "./userSlice/userSlice";
 
 const AdminBlogs = () => {
   const { loading } = useSelector((state) => state.dataFetch);
@@ -107,10 +108,28 @@ const AdminBlogs = () => {
     }
   };
 
+  const handleLogout= () => {
+    try {
+
+      console.log('logout success')
+      dispatch(logOut())
+      
+    } catch (error) {
+      console.log('Error')
+      
+    }
+  }
+
   const rows = blogs.map((element) => (
     <Table.Tr key={element._id}>
       <Table.Td>{element.title}</Table.Td>
-      <Table.Td>{element.img}</Table.Td>
+      <Table.Td>
+      <img
+          src={element.img}
+          alt="Artwork image"
+          className="w-16 h-16 object-cover"
+        />
+      </Table.Td>
       <Table.Td>{
        <div className="" dangerouslySetInnerHTML={{__html: element.para.slice(0,50)}}>
                 
@@ -156,6 +175,24 @@ const AdminBlogs = () => {
     }
   }, [loading]);
 
+
+  if (!formData.img?.includes("https://drive.google.com/thumbnail?id=")  ) {
+
+ 
+
+
+  const fileIdIndex = formData.img.indexOf("/d/") + 3;
+  const fileId = formData.img.substring(
+    fileIdIndex,
+    formData.img.indexOf("/", fileIdIndex)
+  );
+  const convertedLink = `https://drive.google.com/thumbnail?id=${fileId}`;
+
+ formData.img.includes('https://drive.google.com') && setFormData({ ...formData, img: convertedLink });
+} else {
+  console.log("no drive img");
+}
+
   return (
     <main>
       <nav className="flex items-center justify-between sm:container sm:mx-auto px-4 md:px-8 lg:px-0 py-2 relative">
@@ -186,7 +223,7 @@ const AdminBlogs = () => {
           </ul>
           <div className="">
             <Link to={""}>
-              <button className="px-2 py-1 border border-white rounded-sm">
+              <button onClick={handleLogout} className="px-2 py-1 border border-white rounded-sm">
                 Log out
               </button>
             </Link>
@@ -224,7 +261,7 @@ const AdminBlogs = () => {
           </ul>
           <div className="mx-auto">
             <Link to={""}>
-              <button className="px-2 py-1 border border-white rounded-sm">
+              <button onClick={handleLogout} className="px-2 py-1 border border-white rounded-sm">
                 Log out
               </button>
             </Link>
@@ -248,6 +285,14 @@ const AdminBlogs = () => {
                 setFormData({ ...formData, img: e.target.value })
               }
             />
+
+<div className={`${formData.img != "" ? "block" : "hidden"}`}>
+                  <img
+                    src={formData.img}
+                    className="w-full h-32 object-cover mt-4 object-center"
+                    alt="Image Link work, please enter correct image link"
+                  />
+                </div>
             <TextInput
               withAsterisk
               label="Title"

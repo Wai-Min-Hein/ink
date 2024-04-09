@@ -10,18 +10,31 @@ import { useEffect, useState } from "react";
 import { TextInput, Button, Group, Box, Table } from "@mantine/core";
 import Loader from "./components/Loader";
 
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   dataFetchFailure,
   dataFetchStart,
   dataFetchSuccess,
 } from "./userSlice/dataFetchSlice";
+import { logOut } from "./userSlice/userSlice";
 
 const AdminArtists = () => {
   const { loading } = useSelector((state) => state.dataFetch);
 
+
   const dispatch = useDispatch();
+
+  const handleLogout= () => {
+    try {
+
+      console.log('logout success')
+      dispatch(logOut())
+      
+    } catch (error) {
+      console.log('Error')
+      
+    }
+  }
 
   const [artists, setArtists] = useState([]);
 
@@ -40,11 +53,11 @@ const AdminArtists = () => {
     dispatch(dataFetchStart());
 
     e.preventDefault();
-    const id = formData?._id
-    if(id) {
+    const id = formData?._id;
+    if (id) {
       try {
         const res = await axios.put(
-          "http://localhost:7000/api/artist",
+          "https://render-2pmo.onrender.com/api/artist",
           formData
         );
         dispatch(dataFetchSuccess());
@@ -60,8 +73,7 @@ const AdminArtists = () => {
         console.log("Cannot create new artists");
         dispatch(dataFetchStart(error.message));
       }
-    }
-    else{
+    } else {
       try {
         const res = await axios.post(
           "https://render-2pmo.onrender.com/api/artist",
@@ -81,36 +93,27 @@ const AdminArtists = () => {
         dispatch(dataFetchStart(error.message));
       }
     }
-
-
-    
   };
 
   const handleEdit = (id) => {
     const currentArtist = artists.filter((artist) => artist._id == id)[0];
 
     setFormData({ ...currentArtist });
-
-    
   };
 
-  const handleDelete =async (id) => {
-
+  const handleDelete = async (id) => {
     dispatch(dataFetchStart());
 
     try {
       const res = await axios.post(
-        "http://localhost:7000/api/artist/delete",
-        {id}
+        "https://render-2pmo.onrender.com/api/artist/delete",
+        { id }
       );
-      
+
       dispatch(dataFetchSuccess());
-
-      
     } catch (error) {
-      dispatch(dataFetchFailure('Cannot delete data'));
-      console.log('object');
-
+      dispatch(dataFetchFailure("Cannot delete data"));
+      console.log("object");
     }
   };
 
@@ -118,7 +121,13 @@ const AdminArtists = () => {
     <Table.Tr key={element._id}>
       <Table.Td>{element.name}</Table.Td>
       <Table.Td>{element.position}</Table.Td>
-      <Table.Td>{element.img}</Table.Td>
+      <Table.Td>
+        <img
+          src={element.img}
+          alt="Artist image"
+          className="w-16 h-16 object-cover"
+        />
+      </Table.Td>
       <Table.Td>{element.fb}</Table.Td>
       <Table.Td>{element.viber}</Table.Td>
       <Table.Td>{element.phone}</Table.Td>
@@ -147,7 +156,7 @@ const AdminArtists = () => {
         dispatch(dataFetchSuccess());
         setArtists(res.data.data);
       } catch (error) {
-        dispatch(dataFetchFailure('Cannot get data'));
+        dispatch(dataFetchFailure("Cannot get data"));
       }
     };
 
@@ -168,6 +177,23 @@ const AdminArtists = () => {
 
     getData();
   }, [loading]);
+
+  if (!formData.img?.includes("https://drive.google.com/thumbnail?id=")  ) {
+
+ 
+
+
+    const fileIdIndex = formData.img.indexOf("/d/") + 3;
+    const fileId = formData.img.substring(
+      fileIdIndex,
+      formData.img.indexOf("/", fileIdIndex)
+    );
+    const convertedLink = `https://drive.google.com/thumbnail?id=${fileId}`;
+
+   formData.img.includes('https://drive.google.com') && setFormData({ ...formData, img: convertedLink });
+  } else {
+    console.log("no drive img");
+  }
 
   return (
     <>
@@ -191,8 +217,6 @@ const AdminArtists = () => {
                   <li className="cursor-pointer">Artists</li>
                 </Link>
 
-                
-
                 <Link onClick={() => SetNav(false)} to={"/admin/artworks"}>
                   <li className="cursor-pointer">Art works</li>
                 </Link>
@@ -203,7 +227,7 @@ const AdminArtists = () => {
               </ul>
               <div className="">
                 <Link to={""}>
-                  <button className="px-2 py-1 border border-white rounded-sm">
+                  <button onClick={handleLogout} className="px-2 py-1 border border-white rounded-sm">
                     Log out
                   </button>
                 </Link>
@@ -241,7 +265,7 @@ const AdminArtists = () => {
               </ul>
               <div className="mx-auto">
                 <Link to={""}>
-                  <button className="px-2 py-1 border border-white rounded-sm">
+                  <button onClick={handleLogout} className="px-2 py-1 border border-white rounded-sm">
                     Log out
                   </button>
                 </Link>
@@ -287,6 +311,13 @@ const AdminArtists = () => {
                     setFormData({ ...formData, img: e.target.value })
                   }
                 />
+                <div className={`${formData.img != "" ? "block" : "hidden"}`}>
+                  <img
+                    src={formData.img}
+                    className="w-full h-32 object-cover mt-4 object-center"
+                    alt="Image Link work, please enter correct image link"
+                  />
+                </div>
                 <TextInput
                   withAsterisk
                   label="Facebook"

@@ -23,7 +23,6 @@ const BlogComponent = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    dispatch(dataFetchStart());
 
     try {
       const getData = async () => {
@@ -32,11 +31,9 @@ const BlogComponent = () => {
         );
         setBlogs(data.data.data);
       };
-      dispatch(dataFetchSuccess());
 
       getData();
     } catch (error) {
-      dispatch(dataFetchFailure("Cannot get data"));
     }
   }, []);
 

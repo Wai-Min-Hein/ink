@@ -9,19 +9,69 @@ import Loader from "./components/Loader";
 import bg from "/images/hero-image.png";
 import { useEffect, useState } from "react";
 
+
+import axios from "axios";
+
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  dataFetchFailure,
+  dataFetchStart,
+  dataFetchSuccess,
+} from "./userSlice/dataFetchSlice";
+
 const AboutUs = () => {
+
   const lg = useMediaQuery({ query: "(min-width: 1024px)" });
-  const [loader, setLoader] = useState(true);
+
+
+
+
+
+  const { loading } = useSelector((state) => state.dataFetch);
+
+  console.log(loading)
+
+  const dispatch = useDispatch();
+ 
   useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1500);
+    const getData = async () => {
+      dispatch(dataFetchStart());
+      console.log('team fetch start')
+
+
+      try {
+        const res = await axios.get(
+          "https://render-2pmo.onrender.com/api/artist"
+        );
+        dispatch(dataFetchSuccess());
+
+        console.log('team fetch success')
+      } catch (error) {
+        dispatch(dataFetchFailure("Cannot get data"));
+        console.log('team fetch fail')
+
+      }
+    };
+
+    getData();
   }, []);
+
+  
+
+
+
+
+
+
+
+
+ 
 
   return (
     <>
 
-    {loader ? <Loader />: (
+    {loading ? <Loader />: (
       <main className="">
       
 

@@ -3,6 +3,9 @@ import ContactUs from "./components/ContactUs";
 import bg from "/images/hero-image.png";
 import Loader from "./components/Loader";
 
+
+
+
 const Contact = () => {
 
   
@@ -10,7 +13,7 @@ const Contact = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
-    }, 1500);
+    }, 700);
   }, []);
   return (
 

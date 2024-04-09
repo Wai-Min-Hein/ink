@@ -4,16 +4,56 @@ import Whyus from "./components/Whyus";
 import bg from "/images/hero-image.png";
 import Loader from "./components/Loader";
 
+import axios from "axios";
+
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  dataFetchFailure,
+  dataFetchStart,
+  dataFetchSuccess,
+} from "./userSlice/dataFetchSlice";
+
 const Artists = () => {
-  const [loader, setLoader] = useState(true);
+  
+ 
+
+
+  const { loading } = useSelector((state) => state.dataFetch);
+
+
+  const dispatch = useDispatch();
+ 
   useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1500);
+    const getData = async () => {
+      dispatch(dataFetchStart());
+      console.log('team fetch start')
+
+
+      try {
+        const res = await axios.get(
+          "https://render-2pmo.onrender.com/api/artist"
+        );
+        dispatch(dataFetchSuccess());
+
+        console.log('team fetch success')
+      } catch (error) {
+        dispatch(dataFetchFailure("Cannot get data"));
+        console.log('team fetch fail')
+
+      }
+    };
+
+    getData();
   }, []);
+
+  
+
+
+
   return (
     <>
-      {loader ? <Loader />:(
+      {loading ? <Loader />:(
           <main className="">
           <section
             style={{
